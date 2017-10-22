@@ -19,9 +19,9 @@ Paxmod is a dark, minimalist Firefox theme wth multiple tab rows and site-depend
 
 You can change some settings at `about:addons` > *Extensions* > *Paxmod* > *Preferences*.
 
-If you want Paxmod to look the same as in the examples here, you need the [Terminus font](http://terminus-font.sourceforge.net/). Bitmap fonts work great in small sizes on dark backgrounds.
+If you want Paxmod to look the same as in the examples here, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry - and Terminus just is a great font.
 
-Also, you may want to remove clutter from the toolbar to get a cleaner UI. Open the burger menu, click *Customize* and drag away unneeded items (in particular, remove the invisible placeholders to get rid of the empty space). I like to keep only the navigation arrows and the download button.
+Also, you may want to remove clutter from the toolbar to get a cleaner UI. Open the burger menu, click *Customize* and drag away unneeded items (in particular, remove the invisible placeholders to get rid of the empty space). I prefer to keep only the navigation arrows and the download button.
 
 It's also recommended to disable UI animations for less jiggly tab movement. (Go to `about:config` and set `toolkit.cosmeticAnimations.enabled` to `false`.)
 
@@ -39,7 +39,7 @@ Each tab color is generated dynamically from the favicon. A dominant color is ex
 
 ### I can't install the add-on.
 
-If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that turning the checks off has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly. If Firefox complains that the add-on isn't *compatible*, you probably forgot to turn legacy extensions or didn't install the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment).
+If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that turning the checks off has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly. If Firefox complains that the add-on isn't *compatible*, you probably forgot to turn on legacy extensions or didn't install the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment).
 
 ### The design looks off.
 
