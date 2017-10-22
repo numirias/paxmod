@@ -1,0 +1,385 @@
+/* Only apply CSS to XUL windows */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root {
+    --paxmod-background-color: #111;
+    --paxmod-background-color-focus: #222;
+    --paxmod-outline-color-focus: #aaa;
+    --paxmod-grid-color: #333;
+}
+
+:root[privatebrowsingmode=temporary] {
+    --paxmod-background-color: #1e0033;
+    --paxmod-background-color-focus: #2e004d;
+    --paxmod-outline-color-focus: #b84dff;
+}
+
+#urlbar {
+    color: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: var(--paxmod-background-color-focus) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    min-height: 0px !important;
+    font-family: var(--paxmod-font-family);
+    font-size: var(--paxmod-font-size);
+    height: 24px !important;
+    border-right: 1px solid var(--paxmod-grid-color) !important;
+    border-left: 1px solid var(--paxmod-grid-color) !important;
+}
+
+#nav-bar {
+    background: var(--paxmod-background-color) !important;
+    padding: 0 !important;
+    margin-top: -1px !important;
+}
+
+#navigator-toolbox #TabsToolbar:not([collapsed="true"]) + #nav-bar {
+    border: 1px solid var(--paxmod-grid-color) !important;
+    background: var(--paxmod-background-color) !important;
+}
+
+#TabsToolbar {
+    margin-bottom: 0 !important;
+}
+
+#TabsToolbar .private-browsing-indicator {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 5px !important;
+    outline: 5px solid var(--paxmod-background-color);
+    background-color: var(--paxmod-background-color);
+}
+
+#nav-bar-customization-target {
+    background: transparent !important;
+}
+
+#nav-bar > #nav-bar-customization-target toolbarbutton {
+    padding: 0 !important;
+    margin: 0 !important;
+    fill: #666 !important;
+    fill-opacity: 1 !important;
+    min-width: 24px !important;
+    opacity: 1 !important;
+}
+
+#nav-bar #nav-bar-overflow-button {
+    fill: #666 !important;
+}
+
+#nav-bar toolbarbutton:hover,
+#nav-bar > #nav-bar-customization-target toolbarbutton:hover,
+#PanelUI-menu-button:hover,
+#back-button:not([disabled]):hover,
+.urlbar-icon:hover,
+.urlbar-icon-wrapper:hover,
+#nav-bar .urlbar-history-dropmarker[open],
+#nav-bar toolbarbutton[open] {
+    background: #444 !important;
+    fill: #888 !important;
+}
+
+#nav-bar > #nav-bar-customization-target .toolbarbutton-icon,
+#nav-bar .toolbarbutton-icon {
+    width: 24px !important;
+    height: 16px !important;
+    padding: 0 4px !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+#nav-bar .urlbar-icon {
+    padding: 4px !important;
+    width: 24px !important;
+    height: 24px !important;
+    fill: #aaa !important;
+}
+
+#nav-bar .urlbar-history-dropmarker {
+    width: 16px !important;
+    padding: 0 !important;
+}
+
+#nav-bar #PanelUI-button {
+    margin: 0 !important;
+    border: none !important;
+}
+
+#PanelUI-menu-button {
+    padding: 0 !important;
+    fill: #999 !important;
+}
+
+.toolbarbutton-badge-stack {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+#identity-box {
+    padding-inline-start: 4px !important;
+    padding-inline-end: 4px !important;
+    color: #aaa !important;
+    border-image: none !important;
+    border-right: 1px solid var(--paxmod-grid-color) !important;
+}
+
+#identity-box.verifiedIdentity > #identity-icon-labels {
+    color: #14D400 !important;
+}
+
+#navigator-toolbox::after {
+    border: none !important;
+}
+
+#urlbar-zoom-button {
+    color: #aaa;
+    border: none !important;
+    background: transparent !important;
+    font-family: var(--paxmod-font-family);
+    font-size: var(--paxmod-font-size);
+}
+
+#pageActionSeparator {
+    display: none !important;
+}
+
+.autocomplete-history-dropmarker {
+    display: block !important;
+}
+
+/********** Buttons **********/
+
+#back-button {
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+#back-button .toolbarbutton-icon {
+    background: transparent !important;
+    width: 16px !important;
+    height: 16px !important;
+    border: none !important;
+}
+
+#nav-bar > #nav-bar-customization-target #forward-button:not([disabled]),
+#nav-bar > #nav-bar-customization-target #back-button:not([disabled]) {
+    fill: #aaa !important;
+}
+
+#forward-button[disabled],
+#back-button[disabled] {
+    fill: #666 !important;
+}
+
+#nav-bar #back-button:not([disabled]):hover > .toolbarbutton-icon {
+    background-color: transparent !important;
+}
+
+#forward-button:not([disabled]):hover,
+#back-button:not([disabled]):hover {
+    fill: #eee !important;
+}
+
+#forward-button[disabled]:hover,
+#back-button[disabled]:hover {
+    background: transparent !important;
+}
+
+/********** Tabs **********/
+
+#tabbrowser-tabs {
+    background-color: var(--paxmod-background-color);
+}
+
+#tabbrowser-tabs, .tabbrowser-arrowscrollbox {
+    min-height: 0 !important;
+}
+
+#tabbrowser-tabs .scrollbutton-up,
+#tabbrowser-tabs .scrollbutton-down {
+    display: none !important;
+}
+
+#alltabs-button {
+    display: none !important;
+}
+
+#new-tab-button {
+    display: none !important;
+}
+
+#tabbrowser-tabs .tabs-newtab-button {
+    background: transparent;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    padding: 4px 6px !important;
+    display: var(--paxmod-display-newtab);
+}
+
+#tabbrowser-tabs .tabs-newtab-button .toolbarbutton-icon {
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0 !important;
+    fill: #888 !important;
+}
+
+#tabbrowser-tabs .tabs-newtab-button:hover .toolbarbutton-icon {
+    fill: #eee !important;
+}
+
+#tabbrowser-tabs .tabbrowser-arrowscrollbox,
+#tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox {
+    display: block;
+}
+
+#tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox > box {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+#tabbrowser-tabs::before {
+    content: var(--paxmod-version);
+    color: #555;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    font-family: var(--paxmod-font-family);
+    font-size: var(--paxmod-font-size);
+    display: var(--paxmod-display-version);
+}
+
+.arrowscrollbox-overflow-start-indicator,
+.arrowscrollbox-overflow-end-indicator {
+    display: none;
+}
+
+.arrowscrollbox-scrollbox {
+    padding-bottom: 1px;
+    padding-right: 1px;
+}
+
+/********** Single tab **********/
+
+.tabbrowser-tab {
+    font-family: var(--paxmod-font-family);
+    font-size: var(--paxmod-font-size);
+    color: #eee !important;
+    background: var(--paxmod-background-color) !important;
+    width: 10% !important;
+    min-width: 150px !important;
+    max-width: 300px !important;
+    flex-grow: 1;
+    padding: 0 !important;
+    height: 24px !important;
+    margin-left: 1px;
+    margin-top: 1px;
+    outline: 1px solid var(--paxmod-grid-color) !important;
+    display: -moz-box !important;
+    transition-duration: .1ms !important;
+}
+
+/* This is needed to hide closing tabs. */
+.tabbrowser-tab:not([pinned]):not([fadein]) {
+  max-width: 0.1px !important;
+  min-width: 0.1px !important;
+  visibility: hidden !important;
+}
+
+.tabbrowser-tab[selected] {
+    outline: 1px solid var(--paxmod-outline-color-focus) !important;
+    background: var(--paxmod-background-color-focus) !important;
+}
+
+.tabbrowser-tab[pinned] {
+    width: 24px !important;
+    min-width: 0 !important;
+    flex-grow: 0 !important;
+}
+
+.tabbrowser-tab[pinned] .tab-icon-overlay {
+    display: none !important;
+}
+
+.tabbrowser-tab:hover {
+    outline: 1px dashed var(--paxmod-outline-color-focus) !important;
+    background: var(--paxmod-background-color-focus) !important;
+    z-index: 2 !important;
+}
+
+.tabbrowser-tab:after {
+    display: none !important;
+}
+
+@keyframes animate-stripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 60px 0;
+    }
+}
+
+.tabbrowser-tab[busy] .tab-content {
+    background-size: 10px 10px !important;
+    background-image: linear-gradient(135deg,
+        var(--paxmod-grid-color) 25%,
+        transparent 25%,
+        transparent 50%,
+        var(--paxmod-grid-color) 50%,
+        var(--paxmod-grid-color) 75%,
+        transparent 75%,
+        transparent) !important;
+    animation: animate-stripes 2.5s linear infinite !important;
+}
+
+.tabbrowser-tab .tab-background {
+    display: none;
+}
+
+.tab-stack {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.tab-content {
+    padding: 0 4px !important;
+}
+
+.tab-icon-image {
+    height: 16px !important;
+    width: 16px !important;
+    background: transparent;
+    padding: 0 !important;
+    margin: 0 5px 0 0px !important;
+    list-style-image: none !important;
+    display: -moz-box !important;
+}
+
+.tab-icon-image:not([src]) {
+    outline: 1px dashed #555 !important;
+    outline-offset: -1px;
+}
+
+.tab-throbber {
+    display: none;
+}
+
+.tab-close-button {
+    display: none !important;
+}
+
+.tabbrowser-tab:hover .tab-close-button {
+    display: -moz-box !important;
+}
+
+.tabbrowser-tab[pinned]:hover .tab-close-button {
+    display: none !important;
+}
+
+.tab-loading-burst[bursting]::before {
+    display: none !important;
+}

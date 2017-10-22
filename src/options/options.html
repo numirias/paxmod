@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <h1>Settings</h1>
+
+    <div class="options">
+      <div><label for="enableColors">Enable tab colors</label></div>
+      <div><input id="enableColors" type="checkbox"></div>
+
+      <div><label for="displayVersion">Display version info</label></div>
+      <div><input id="displayVersion" type="checkbox"></div>
+
+      <div><label for="displayNewtab">Display new tab button</label></div>
+      <div><input id="displayNewtab" type="checkbox"></div>
+
+      <div><label for="fontFamily">Font family</label></div>
+      <div><input id="fontFamily" type="text"></div>
+
+      <div><label for="fontSize">Font size</label></div>
+      <div><input id="fontSize" type="number"> px</div>
+    </div>
+
+    <div class="optionButtons">
+      <button type="submit" id="saveOptionsButton">Apply</button>
+      <button type="submit" id="resetOptionsButton">Restore defaults</button>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Paxmod",
+  "version": "1.0",
+  "homepage_url": "https://github.com/numirias/paxmod",
+  "description": "Paxmod is a dark, minimalist Firefox theme wth multi-line tabs and site-dependent tab colors.",
+  "applications": {
+    "gecko": {
+      "id": "paxmod@numirias"
+    }
+  },
+  "icons": {
+    "48": "img/icon.png"
+  },
+  "permissions": [
+    "<all_urls>",
+    "management",
+    "storage",
+    "tabs",
+    "experiments.stylesheet"
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+  "background": {
+    "scripts": [
+      "iconcolor.js",
+      "background.js"
+    ]
+  }
+}
