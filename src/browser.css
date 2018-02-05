@@ -366,7 +366,11 @@
 }
 
 .tab-throbber {
-    display: none;
+    display: none !important;
+}
+
+.tab-throbber::before {
+    display: none !important;
 }
 
 .tab-close-button {
