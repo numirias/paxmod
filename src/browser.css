@@ -56,17 +56,26 @@
     background: transparent !important;
 }
 
-#nav-bar > #nav-bar-customization-target toolbarbutton {
+#nav-bar > #nav-bar-customization-target toolbarbutton,
+#PersonalToolbar toolbarbutton,
+#nav-bar #nav-bar-overflow-button,
+#PanelUI-menu-button
+{
     padding: 0 !important;
     margin: 0 !important;
-    fill: #666 !important;
+    fill: #888 !important;
     fill-opacity: 1 !important;
     min-width: 24px !important;
     opacity: 1 !important;
 }
 
-#nav-bar #nav-bar-overflow-button {
-    fill: #666 !important;
+#nav-bar > #nav-bar-customization-target toolbarbutton[disabled],
+#PersonalToolbar toolbarbutton[disabled],
+#nav-bar > #nav-bar-customization-target toolbarbutton:hover[disabled],
+#PersonalToolbar toolbarbutton:hover[disabled],
+#forward-button[disabled],
+#back-button[disabled] {
+    fill: #555 !important;
 }
 
 #nav-bar toolbarbutton:hover,
@@ -76,9 +85,11 @@
 .urlbar-icon:hover,
 .urlbar-icon-wrapper:hover,
 #nav-bar .urlbar-history-dropmarker[open],
-#nav-bar toolbarbutton[open] {
-    background: #444 !important;
-    fill: #888 !important;
+#nav-bar toolbarbutton[open],
+#PersonalToolbar toolbarbutton:hover,
+#identity-box:hover {
+    background: var(--paxmod-grid-color) !important;
+    fill: #bbb !important;
 }
 
 #nav-bar > #nav-bar-customization-target .toolbarbutton-icon,
@@ -105,11 +116,6 @@
 #nav-bar #PanelUI-button {
     margin: 0 !important;
     border: none !important;
-}
-
-#PanelUI-menu-button {
-    padding: 0 !important;
-    fill: #999 !important;
 }
 
 .toolbarbutton-badge-stack {
@@ -166,11 +172,6 @@
 #nav-bar > #nav-bar-customization-target #forward-button:not([disabled]),
 #nav-bar > #nav-bar-customization-target #back-button:not([disabled]) {
     fill: #aaa !important;
-}
-
-#forward-button[disabled],
-#back-button[disabled] {
-    fill: #666 !important;
 }
 
 #nav-bar #back-button:not([disabled]):hover > .toolbarbutton-icon {
@@ -382,4 +383,29 @@
 
 .tab-loading-burst[bursting]::before {
     display: none !important;
+}
+
+/********** Bookmarks Toolbar **********/
+
+#PersonalToolbar {
+    font-family: var(--paxmod-font-family) !important;
+    font-size: var(--paxmod-font-size) !important;
+    background: var(--paxmod-background-color) !important;
+    color: #ddd !important;
+    padding: 0 !important;
+    height: 25px !important;
+    border-left: 1px solid var(--paxmod-grid-color) !important;
+    border-right: 1px solid var(--paxmod-grid-color) !important;
+    border-bottom: 1px solid var(--paxmod-grid-color) !important;
+}
+
+#PersonalToolbar toolbarbutton {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    min-width: 24px !important;
+}
+
+#PersonalToolbar .bookmark-item {
+    padding: 0 4px !important;
 }
