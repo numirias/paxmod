@@ -1,9 +1,9 @@
 
 # Paxmod
 
-Paxmod is a dark, minimalist Firefox theme wth multiple tab rows and site-dependent tab colors. If you like the terminal-like aesthetics of compact UIs with white-on-black monospace fonts, give Paxmod a try.
+Paxmod is a dark, minimalist Firefox theme wth multiple tab rows and site-dependent tab colors. If enjoy the terminal-like aesthetics of a compact UI with white-on-black monospace fonts, give it a try.
 
-![Demo](https://i.imgur.com/bgLIBb4.gif)
+![Demo](https://i.imgur.com/bjYnDKY.gif)
 
 ## Installation
 
@@ -19,17 +19,17 @@ Paxmod is a dark, minimalist Firefox theme wth multiple tab rows and site-depend
 
 You can change some settings at `about:addons` > *Extensions* > *Paxmod* > *Preferences*.
 
-If you want Paxmod to look the same as in the examples here, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry - and Terminus just is a great font.
+If you want Paxmod to look the same as in the examples here, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry. But you can set any font you like.
 
-Also, you may want to remove clutter from the toolbar to get a cleaner UI. Open the burger menu, click *Customize* and drag away unneeded items (in particular, remove the invisible placeholders to get rid of the empty space). I prefer to keep only the navigation arrows and the download button.
+Also, you may want to remove clutter from the toolbar to get a cleaner UI. Open the burger menu (☰), click *Customize* and drag away unneeded items (in particular, remove the invisible placeholders to get rid of the empty space). I prefer to keep only the navigation arrows and the download button.
 
-It's also recommended to disable UI animations for less jiggly tab movement. (Go to `about:config` and set `toolkit.cosmeticAnimations.enabled` to `false`.)
+I'd also recommend you disable UI animations for less jiggly tab movement. (Go to `about:config` and set `toolkit.cosmeticAnimations.enabled` to `false`.)
 
 ## FAQ
 
 ### Why can't I install Paxmod as a verified extension through Mozilla?
 
-Mozilla is dropping support for legacy extensions, so all new extensions need to comply with the [WebExtension](https://developer.mozilla.org/en-US/Add-ons/WebExtensions) standard. But Paxmod needs to be able to modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod is relying on an experimental API that you have to install as a separate add-on. Unfortunately, due to this extra dependency, Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
+Mozilla has dropped support for legacy extensions, so all new extensions need to comply with the [WebExtension](https://developer.mozilla.org/en-US/Add-ons/WebExtensions) standard. However, Paxmod needs to be able to modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that you have to install as a separate add-on. Unfortunately, due to this extra dependency, Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
 
 ### How are tab colors calculated?
 
@@ -43,7 +43,7 @@ If Firefox complains that the add-on isn't verified, you probably didn't turn ex
 
 ### The design looks off.
 
-Make sure you have all other themes disabled (look under `about:addons` > *Themes*), because some themes might apply aggressive CSS rules that interfere with Paxmod. Also, Paxmod is mainly tested on Linux, so there might be some design quirks on MacOS or Windows that I'm not aware of. If in doubt, please [file a bug](https://github.com/numirias/paxmod/issues/new).
+Make sure you have all other themes disabled (look under `about:addons` > *Themes*), because some themes might apply aggressive CSS rules that interfere with Paxmod. Also, *Paxmod is mainly tested on Linux*, so there are most likely some design quirks on MacOS or Windows that I'm not aware of. If in doubt, please [file an issue](https://github.com/numirias/paxmod/issues/new). I'd also welcome any help making Paxmod compatible with other OSes.
 
 ### The font looks bad.
 
@@ -55,7 +55,7 @@ On Arch Linux, you can install Terminus via:
 
 ### Firefox still doesn't find Terminus.
 
-Make sure you type in the exact name of the font. Some fonts have non-obvious names. (On my machine, the font was registered as `xos4 Terminus`, not `Terminus`.) You can list your installed fonts with `fc-list`, e.g.:
+Make sure you type in the exact name of the font. Some fonts have non-obvious names. (On my machine, Terminus is registered as `xos4 Terminus`, not `Terminus`.) You can list your installed fonts with `fc-list`, e.g.:
 
     $ fc-list | grep -i terminus
     ...
