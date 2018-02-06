@@ -1,6 +1,6 @@
 let iconColor = (() => { // eslint-disable-line no-unused-vars
   const NS_XHTML = 'http://www.w3.org/1999/xhtml';
-  const minLightness = 68;
+  const minLightness = 62;
   const defaultColor = [220, 220, 220];
 
   function labToRgb(lab) {
@@ -43,8 +43,14 @@ let iconColor = (() => { // eslint-disable-line no-unused-vars
     ];
   }
 
-  function pseudoSaturation(rgb) {
-    return Math.max(...rgb) - Math.min(...rgb);
+  function saturationAndValue(rgb) {
+    let r = rgb[0] / 255;
+    let g = rgb[1] / 255;
+    let b = rgb[2] / 255;
+    let max = Math.max(r, g, b);
+    let min = Math.min(r, g, b);
+    let s = max === 0 ? 0 : (max - min) / max;
+    return [s, max];
   }
 
   function pixelColors(img) {
@@ -76,12 +82,15 @@ let iconColor = (() => { // eslint-disable-line no-unused-vars
       let b = values[i + 2];
       let a = values[i + 3];
       let rgb = [r, g, b];
-      // Skip transparent and greyish tones
-      if (a < 1 || (r === g && r === b) || pseudoSaturation([r, g, b]) < 40) {
+      let sv = saturationAndValue(rgb);
+      let s = sv[0];
+      let v = sv[1];
+      // Skip transparent, dark and greyish tones
+      if (a < 0.9 || s < 0.2 || v < 0.2) {
         continue;
       }
       freqs[rgb] = freqs[rgb] ? (freqs[rgb] + 1) : 1;
-      if (pseudoSaturation(mostColorful) < pseudoSaturation(rgb)) {
+      if (saturationAndValue(mostColorful)[0] < s) {
         mostColorful = rgb;
       }
     }
