@@ -1,7 +1,7 @@
 
 # Paxmod
 
-Paxmod is a dark, minimalist Firefox theme wth multiple tab rows and site-dependent tab colors. If enjoy the terminal-like aesthetics of a compact UI with white-on-black monospace fonts, give it a try.
+Paxmod is a dark, minimalist Firefox theme wth multiple tab rows and site-dependent tab colors. If you enjoy the terminal-like aesthetics of a compact UI with white-on-black monospace fonts, give it a try.
 
 ![Demo](https://i.imgur.com/bjYnDKY.gif)
 
