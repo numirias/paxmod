@@ -23,6 +23,7 @@ module.exports = {
     "no-mixed-operators": "off",
     "no-plusplus": "off",
     "no-continue": "off",
+    "no-lonely-if": "off",
     "wrap-iife": [
       "error",
       "inside",

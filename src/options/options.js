@@ -6,6 +6,9 @@ function displayOptions() {
   browser.storage.local.get().then(options => {
     for (let key in options) {
       let element = document.getElementById(key);
+      if (!element) {
+        continue;
+      }
       if (element.type === 'checkbox') {
         element.checked = options[key];
       } else {

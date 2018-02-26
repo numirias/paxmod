@@ -1,9 +1,18 @@
 body {
-    font-size: 1.25rem;
+    font-size: 1rem;
+}
+
+label {
+    font-size: 1.2rem;
 }
 
 h1 {
     font-size: 2rem;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 1.5rem;
     font-weight: normal;
 }
 
@@ -32,4 +41,9 @@ input[type="text"] {
 
 input[type="checkbox"] {
     display: block;
+}
+
+.var {
+    font-family: monospace;
+    width: 200px !important;
 }

@@ -1,6 +1,5 @@
 let iconColor = (() => { // eslint-disable-line no-unused-vars
   const NS_XHTML = 'http://www.w3.org/1999/xhtml';
-  const minLightness = 62;
   const defaultColor = [220, 220, 220];
 
   function labToRgb(lab) {
@@ -64,15 +63,15 @@ let iconColor = (() => { // eslint-disable-line no-unused-vars
     return colors;
   }
 
-  function adjustLightness(rgb) {
+  function adjustLightness(rgb, minLightness, maxLightness) {
     let lab = rgbToLab(rgb);
     // Set a minimum lightness to ensure that all colors are visible on a dark
     // background
-    lab[0] = Math.max(lab[0], minLightness);
+    lab[0] = Math.max(Math.min(lab[0], maxLightness), minLightness);
     return labToRgb(lab).map(Math.round);
   }
 
-  function dominantColor(img) {
+  function dominantColor(img, minLightness, maxLightness) {
     let mostColorful = defaultColor;
     let freqs = {};
     let values = pixelColors(img);
@@ -104,15 +103,15 @@ let iconColor = (() => { // eslint-disable-line no-unused-vars
     } else {
       best = mostColorful;
     }
-    return adjustLightness(best);
+    return adjustLightness(best, minLightness, maxLightness);
   }
 
   function rgbToString(rgb) {
     return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
   }
 
-  function calculateIconColor(img) {
-    return rgbToString(dominantColor(img));
+  function calculateIconColor(img, minLightness, maxLightness) {
+    return rgbToString(dominantColor(img, minLightness, maxLightness));
   }
 
   return calculateIconColor;

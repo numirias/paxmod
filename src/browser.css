@@ -1,24 +1,23 @@
 /* Only apply CSS to XUL windows */
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-:root {
-    --paxmod-background-color: #111;
-    --paxmod-background-color-focus: #222;
-    --paxmod-outline-color-focus: #aaa;
-    --paxmod-grid-color: #333;
-}
-
 :root[privatebrowsingmode=temporary] {
     --paxmod-background-color: #1e0033;
     --paxmod-background-color-focus: #2e004d;
     --paxmod-outline-color-focus: #b84dff;
+
+    --paxmod-foreground-color: #eeeeee;
+    --paxmod-icon-color: #bbbbbb;
+    --paxmod-grid-color: #333333;
+    --paxmod-urlbar-color: #2e004d;
+    --paxmod-hover-color: #333333;
 }
 
 #urlbar {
-    color: #fff !important;
+    color: var(--paxmod-foreground-color) !important;
     padding: 0 !important;
     margin: 0 !important;
-    background: var(--paxmod-background-color-focus) !important;
+    background: var(--paxmod-urlbar-color) !important;
     border: 0 !important;
     border-radius: 0 !important;
     min-height: 0px !important;
@@ -38,6 +37,7 @@
 #navigator-toolbox #TabsToolbar:not([collapsed="true"]) + #nav-bar {
     border: 1px solid var(--paxmod-grid-color) !important;
     background: var(--paxmod-background-color) !important;
+    box-shadow: none !important;
 }
 
 #TabsToolbar {
@@ -63,10 +63,8 @@
 {
     padding: 0 !important;
     margin: 0 !important;
-    fill: #888 !important;
-    fill-opacity: 1 !important;
+    fill: var(--paxmod-icon-color) !important;
     min-width: 24px !important;
-    opacity: 1 !important;
 }
 
 #nav-bar > #nav-bar-customization-target toolbarbutton[disabled],
@@ -75,7 +73,7 @@
 #PersonalToolbar toolbarbutton:hover[disabled],
 #forward-button[disabled],
 #back-button[disabled] {
-    fill: #555 !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 #nav-bar toolbarbutton:hover,
@@ -88,8 +86,8 @@
 #nav-bar toolbarbutton[open],
 #PersonalToolbar toolbarbutton:hover,
 #identity-box:hover {
-    background: var(--paxmod-grid-color) !important;
-    fill: #bbb !important;
+    background: var(--paxmod-hover-color) !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 #nav-bar > #nav-bar-customization-target .toolbarbutton-icon,
@@ -105,7 +103,7 @@
     padding: 4px !important;
     width: 24px !important;
     height: 24px !important;
-    fill: #aaa !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 #nav-bar .urlbar-history-dropmarker {
@@ -126,7 +124,8 @@
 #identity-box {
     padding-inline-start: 4px !important;
     padding-inline-end: 4px !important;
-    color: #aaa !important;
+    color: var(--paxmod-foreground-color) !important;
+    fill: var(--paxmod-icon-color) !important;
     border-image: none !important;
     border-right: 1px solid var(--paxmod-grid-color) !important;
 }
@@ -140,7 +139,7 @@
 }
 
 #urlbar-zoom-button {
-    color: #aaa;
+    color: var(--paxmod-foreground-color);
     border: none !important;
     background: transparent !important;
     font-family: var(--paxmod-font-family);
@@ -171,7 +170,7 @@
 
 #nav-bar > #nav-bar-customization-target #forward-button:not([disabled]),
 #nav-bar > #nav-bar-customization-target #back-button:not([disabled]) {
-    fill: #aaa !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 #nav-bar #back-button:not([disabled]):hover > .toolbarbutton-icon {
@@ -180,7 +179,7 @@
 
 #forward-button:not([disabled]):hover,
 #back-button:not([disabled]):hover {
-    fill: #eee !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 #forward-button[disabled]:hover,
@@ -224,11 +223,11 @@
     width: 16px !important;
     height: 16px !important;
     padding: 0 !important;
-    fill: #888 !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 #tabbrowser-tabs .tabs-newtab-button:hover .toolbarbutton-icon {
-    fill: #eee !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 #tabbrowser-tabs .tabbrowser-arrowscrollbox,
@@ -268,7 +267,7 @@
 .tabbrowser-tab {
     font-family: var(--paxmod-font-family);
     font-size: var(--paxmod-font-size);
-    color: #eee !important;
+    color: var(--paxmod-foreground-color) !important;
     background: var(--paxmod-background-color) !important;
     width: 10% !important;
     min-width: 150px !important;
@@ -358,6 +357,7 @@
     margin: 0 5px 0 0px !important;
     list-style-image: none !important;
     display: -moz-box !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 .tab-icon-image:not([src]) {
@@ -375,6 +375,7 @@
 
 .tab-close-button {
     display: none !important;
+    fill: var(--paxmod-icon-color) !important;
 }
 
 .tabbrowser-tab:hover .tab-close-button {
@@ -395,7 +396,7 @@
     font-family: var(--paxmod-font-family) !important;
     font-size: var(--paxmod-font-size) !important;
     background: var(--paxmod-background-color) !important;
-    color: #ddd !important;
+    color: var(--paxmod-foreground-color) !important;
     padding: 0 !important;
     height: 25px !important;
     border-left: 1px solid var(--paxmod-grid-color) !important;

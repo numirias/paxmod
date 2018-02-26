@@ -7,8 +7,28 @@ var defaultOptions = { // eslint-disable-line no-var
   displayVersion: false,
   displayNewtab: false,
   fontFamily: 'Terminus, Tamsyn, monospace',
-  fontSize: '12',
+  fontSize: 12,
+  minLightness: 62,
+  maxLightness: 100,
+  bgColor: '#111111',
+  fgColor: '#eeeeee',
+  iconColor: '#aaaaaa',
+  gridColor: '#333333',
+  urlbarColor: '#222222',
+  hoverColor: '#333333',
+  outlineColorFocus: '#aaaaaa',
+  bgColorFocus: '#222222',
+  bgColorVar: '--background',
+  fgColorVar: '--foreground',
+  iconColorVar: '--color1',
+  gridColorVar: '--color2',
+  urlbarColorVar: '--color3',
+  hoverColorVar: '--color4',
+  outlineColorFocusVar: '--color5',
+  bgColorFocusVar: '--color6',
+  userCSS: '',
 };
+let cachedOptions = {};
 // In currentOptionsSheet we keep track of the dynamic stylesheet that applies
 // options (such as the user font), so that we can unload() the sheet once the
 // options change.
@@ -21,12 +41,23 @@ function setOptionsSheet(options) {
     let version = `${info.name}/${info.version} + paxmod/${manifest.version}`;
     // User options are applied via a dynamic stylesheet. Doesn't look elegant
     // but keeps the API small.
-    let rules = `:root {
+    let rules = `
+    @import url('${options.userCSS}');
+    :root {
       --paxmod-version: '${version}';
       --paxmod-font-size: ${options.fontSize}px;
       --paxmod-font-family: ${options.fontFamily};
       --paxmod-display-version: ${options.displayVersion ? 'block' : 'none'};
       --paxmod-display-newtab: ${options.displayNewtab ? 'block' : 'none'};
+      --paxmod-background-color: var(${options.bgColorVar}, ${options.bgColor});
+      --paxmod-foreground-color: var(${options.fgColorVar}, ${options.fgColor});
+      --paxmod-icon-color: var(${options.iconColorVar}, ${options.iconColor});
+      --paxmod-grid-color: var(${options.gridColorVar}, ${options.gridColor});
+      --paxmod-urlbar-color: var(${options.urlbarColorVar}, ${options.urlbarColor});
+      --paxmod-hover-color: var(${options.hoverColorVar}, ${options.hoverColor});
+      --paxmod-outline-color-focus: var(${options.outlineColorFocusVar}, ${options.outlineColorFocus});
+      --paxmod-background-color-focus: var(${options.bgColorFocusVar}, ${options.bgColorFocus});
+
     }`;
     // CSS rules are base64-encoded because the native StyleSheetService API
     // can't handle some special chars.
@@ -45,7 +76,11 @@ function addIconColor(url) {
   }
   let img = document.createElementNS(NS_XHTML, 'img');
   img.addEventListener('load', () => {
-    let color = iconColor(img);
+    let color = iconColor(
+      img,
+      Number(cachedOptions.minLightness),
+      Number(cachedOptions.maxLightness),
+    );
     // We can't access the Chrome DOM, so we apply each icon color as a
     // stylesheet.
     let sheetText = `data:text/css,.tabbrowser-tab .tab-icon-image[src='${url}']
@@ -82,6 +117,9 @@ function onTabUpdated(tabId, changeInfo) {
 
 function applyOptions() {
   browser.storage.local.get().then(options => {
+    removeAllIconColors();
+    cachedOptions.minLightness = options.minLightness;
+    cachedOptions.maxLightness = options.maxLightness;
     setOptionsSheet(options);
     if (options.enableColors) {
       if (!browser.tabs.onUpdated.hasListener(onTabUpdated)) {
@@ -92,7 +130,6 @@ function applyOptions() {
       if (browser.tabs.onUpdated.hasListener(onTabUpdated)) {
         browser.tabs.onUpdated.removeListener(onTabUpdated);
       }
-      removeAllIconColors();
     }
   });
 }
