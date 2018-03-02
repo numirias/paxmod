@@ -3,7 +3,7 @@
   "name": "Paxmod",
   "version": "1.2",
   "homepage_url": "https://github.com/numirias/paxmod",
-  "description": "Paxmod is a dark, minimalist Firefox theme with multiple tab rows and site-dependent tab colors.",
+  "description": "Paxmod is a simple, compact and customizable Firefox theme with multiple tab rows and site-dependent tab colors.",
   "applications": {
     "gecko": {
       "id": "paxmod@numirias"
