@@ -70,3 +70,17 @@ Make sure you type in the exact name of the font. Some fonts have non-obvious na
     /usr/share/fonts/misc/ter-x16b.pcf.gz: xos4 Terminus:style=Bold
     /usr/share/fonts/misc/ter-x14n.pcf.gz: xos4 Terminus:style=Regular
     ...
+
+## Contributing
+
+Use [web-ext](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_started_with_web-ext) to develop locally. After cloning the repository, you can run Paxmod similar to this:
+
+    web-ext run --firefox /usr/bin/firefox-nightly --firefox-profile dev-paxmod --source-dir src
+
+(Make sure the chosen profile has the stylesheet API installed, you're in the project's root directory, and you're pointing to an existing Firefox binary.)
+
+And to build the addon, run:
+
+    web-ext build --overwrite-dest --source-dir src 
+
+This will produce a `.zip` file in `web-ext-artifacts/`. Rename the file to `.xpi` to have it recognized as a Firefox extension.
