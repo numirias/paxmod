@@ -16,7 +16,8 @@ var defaultOptions = { // eslint-disable-line no-var
   gridColor: '#333333',
   urlbarColor: '#222222',
   hoverColor: '#333333',
-  outlineColorFocus: '#aaaaaa',
+  outlineColorFocus: '#999999',
+  tabBgColor: '#111111',
   bgColorFocus: '#222222',
   bgColorVar: '--background',
   fgColorVar: '--foreground',
@@ -25,7 +26,8 @@ var defaultOptions = { // eslint-disable-line no-var
   urlbarColorVar: '--color3',
   hoverColorVar: '--color4',
   outlineColorFocusVar: '--color5',
-  bgColorFocusVar: '--color6',
+  tabBgColorVar: '--color6',
+  bgColorFocusVar: '--color7',
   userCSS: '',
 };
 let cachedOptions = {};
@@ -56,6 +58,7 @@ function setOptionsSheet(options) {
       --paxmod-urlbar-color: var(${options.urlbarColorVar}, ${options.urlbarColor});
       --paxmod-hover-color: var(${options.hoverColorVar}, ${options.hoverColor});
       --paxmod-outline-color-focus: var(${options.outlineColorFocusVar}, ${options.outlineColorFocus});
+      --paxmod-tab-background-color: var(${options.tabBgColorVar}, ${options.tabBgColor});
       --paxmod-background-color-focus: var(${options.bgColorFocusVar}, ${options.bgColorFocus});
 
     }`;

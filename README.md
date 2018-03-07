@@ -1,7 +1,7 @@
 
 # Paxmod
 
-Paxmod is a Firefox theme wth multiple tab rows and site-dependent tab colors. If you enjoy a straightforward, compact UI with customizable colors, fonts and more, give it a try.
+Paxmod is a Firefox theme with multiple tab rows and site-dependent tab colors. It provides a straightforward grid-style UI, lets you customize colors and fonts, and add your own custom CSS.
 
 ![Demo](https://i.imgur.com/bjYnDKY.gif)
 

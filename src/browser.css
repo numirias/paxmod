@@ -268,7 +268,7 @@
     font-family: var(--paxmod-font-family);
     font-size: var(--paxmod-font-size);
     color: var(--paxmod-foreground-color) !important;
-    background: var(--paxmod-background-color) !important;
+    background: var(--paxmod-tab-background-color) !important;
     width: 10% !important;
     min-width: 150px !important;
     max-width: 300px !important;
@@ -326,13 +326,13 @@
 .tabbrowser-tab[busy] .tab-content {
     background-size: 10px 10px !important;
     background-image: linear-gradient(135deg,
-        var(--paxmod-grid-color) 25%,
-        transparent 25%,
-        transparent 50%,
-        var(--paxmod-grid-color) 50%,
-        var(--paxmod-grid-color) 75%,
-        transparent 75%,
-        transparent) !important;
+        var(--paxmod-background-color-focus) 25%,
+        var(--paxmod-tab-background-color) 25%,
+        var(--paxmod-tab-background-color) 50%,
+        var(--paxmod-background-color-focus) 50%,
+        var(--paxmod-background-color-focus) 75%,
+        var(--paxmod-tab-background-color) 75%,
+        var(--paxmod-tab-background-color)) !important;
     animation: animate-stripes 2.5s linear infinite !important;
 }
 
