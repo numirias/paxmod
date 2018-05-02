@@ -17,13 +17,15 @@ Or tweak it as you like.
 
 ## Installation
 
-- Use an up-to-date version (57+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or Nightly.
+- Use an up-to-date version (57+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or Nightly<sup>1</sup>.
 
 - Enable legacy extensions and disable extension signature checks. (Go to `about:config` and set `extensions.legacy.enabled` to `true`, and `xpinstall.signatures.required` to `false`. [Why?](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla))
 
 - Install the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment). (Download the `.xpi` file from  [here](https://github.com/numirias/stylesheet-api-experiment/releases/latest) and load it in Firefox.)
 
 - Install Paxmod. (Download the `.xpi` file from [here](https://github.com/numirias/paxmod/releases/latest) and load it in Firefox.)
+
+**<sup>1</sup>Firefox >= 61 uses a different format for API experiments, so you may experience compatibility issues with the latest Firefox Nightly. I'm working on an update right now. Until then, you may want to use Firefox Developer instead.**
 
 ## Customization
 
