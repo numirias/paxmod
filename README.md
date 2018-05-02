@@ -17,21 +17,18 @@ Or tweak it as you like.
 
 ## Installation
 
-- Use an up-to-date version (57+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or Nightly<sup>1</sup>.
+- Use an up-to-date version (60+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or Nightly.
 
-- Enable legacy extensions and disable extension signature checks. (Go to `about:config` and set `extensions.legacy.enabled` to `true`, and `xpinstall.signatures.required` to `false`. [Why?](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla))
-
-- Install the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment). (Download the `.xpi` file from  [here](https://github.com/numirias/stylesheet-api-experiment/releases/latest) and load it in Firefox.)
+- Allow unsigned extensions. (Go to `about:config` and set `xpinstall.signatures.required` to `false`. [Why?](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla))
 
 - Install Paxmod. (Download the `.xpi` file from [here](https://github.com/numirias/paxmod/releases/latest) and load it in Firefox.)
 
-**<sup>1</sup>Firefox >= 61 uses a different format for API experiments, so you may experience compatibility issues with the latest Firefox Nightly. I'm working on an update right now. Until then, you may want to use Firefox Developer instead.**
 
 ## Customization
 
 You can change the font, colors and other settings at `about:addons` > *Extensions* > *Paxmod* > *Preferences*.
 
-If you want Paxmod to look exactly the same as in the demo, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry. But you can set any font you like.
+If you want Paxmod to look exactly the same as in the dark demo, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry. But you can set any font you like.
 
 Also, you may want to remove clutter from the toolbar to get a cleaner UI. Open the burger menu (☰), click *Customize* and drag away unneeded items (in particular, remove the invisible placeholders to get rid of the empty space). I prefer to keep only the navigation arrows and the download button.
 
@@ -49,7 +46,7 @@ Each color in the settings has a *Var* field where you can specify the name of a
 
 ### Why can't I install Paxmod as a verified extension through Mozilla?
 
-Mozilla has dropped support for legacy extensions, so all new extensions need to comply with the [WebExtension](https://developer.mozilla.org/en-US/Add-ons/WebExtensions) standard. However, Paxmod needs to be able to modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that you have to install as a separate add-on. Unfortunately, due to this extra dependency, Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
+Paxmod needs to be able to modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that ships included in the add-on. Unfortunately, this means Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
 
 ### How are tab colors calculated?
 
@@ -59,7 +56,7 @@ Each tab color is generated dynamically from the favicon. A dominant color is ex
 
 ### I can't install the add-on.
 
-If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that turning the checks off has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly. If Firefox complains that the add-on isn't *compatible*, you probably forgot to turn on legacy extensions or didn't install the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment).
+If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that turning the checks off has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly. (Also, if you used a previous version of Paxmod, make sure you uninstall the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment) which is not required anymore.)
 
 ### The design looks off.
 
