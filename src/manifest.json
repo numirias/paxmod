@@ -16,8 +16,7 @@
     "<all_urls>",
     "management",
     "storage",
-    "tabs",
-    "experiments.stylesheet"
+    "tabs"
   ],
   "options_ui": {
     "page": "options/options.html",
@@ -28,5 +27,15 @@
       "iconcolor.js",
       "background.js"
     ]
+  },
+  "experiment_apis": {
+    "stylesheet": {
+      "schema": "stylesheet-api-experiment/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["stylesheet"]],
+        "script": "stylesheet-api-experiment/api.js"
+      }
+    }
   }
 }
