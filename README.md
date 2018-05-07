@@ -21,6 +21,8 @@ Or tweak it as you like.
 
 - Allow unsigned extensions. (Go to `about:config` and set `xpinstall.signatures.required` to `false`. [Why?](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla))
 
+- Allow legacy extensions. (Go to `about:config` and set `extensions.legacy.enabled` to `true`. This is required to load the bundled stylesheet API.)
+
 - Install Paxmod. (Download the `.xpi` file from [here](https://github.com/numirias/paxmod/releases/latest) and load it in Firefox.)
 
 
