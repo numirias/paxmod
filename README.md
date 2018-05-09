@@ -50,6 +50,11 @@ Each color in the settings has a *Var* field where you can specify the name of a
 
 Paxmod needs to be able to modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that ships included in the add-on. Unfortunately, this means Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
 
+### Where did the title bar go?
+
+I couldn't find a good and reliable way to integrate an inline title bar into the theme, so it's removed by default. You can re-enable it in the settings, but expect layout glitches. Try using keyboard shortcuts instead. Also, if you think you found a way to integrate the title bar into the theme with pure CSS, feel free to submit a PR.
+
+
 ### How are tab colors calculated?
 
 Each tab color is generated dynamically from the favicon. A dominant color is extracted from the image and eventually adjusted to an appropriate lightness in the [Lab color space](https://en.wikipedia.org/wiki/Lab_color_space). This works reasonably well and ensures that all tab labels are legible.
