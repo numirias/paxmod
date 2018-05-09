@@ -24,8 +24,8 @@ function saveOptions() {
     let value = field.type === 'checkbox' ? field.checked : field.value;
     newOptions[field.id] = value;
   }
-  if (!/^([a-zA-Z0-9.,-_+=\s]+)$/.test(newOptions.fontFamily)) {
-    window.alert('Font family must match: /^([a-zA-Z0-9.,-_+=\\s]+)$/');
+  if (!/^([a-zA-Z0-9.,-_+=()\s]+)$/.test(newOptions.fontFamily)) {
+    window.alert('Font family must match: /^([a-zA-Z0-9.,-_+=()\\s]+)$/');
     return;
   }
   if (!/^\d+$/.test(newOptions.fontSize)) {
