@@ -6,6 +6,7 @@ var defaultOptions = { // eslint-disable-line no-var
   enableColors: true,
   displayVersion: false,
   displayNewtab: false,
+  displayTitlebar: false,
   fontFamily: 'Terminus, Tamsyn, monospace',
   fontSize: 12,
   minLightness: 62,
@@ -51,6 +52,8 @@ function setOptionsSheet(options) {
       --paxmod-font-family: ${options.fontFamily};
       --paxmod-display-version: ${options.displayVersion ? 'block' : 'none'};
       --paxmod-display-newtab: ${options.displayNewtab ? 'block' : 'none'};
+      --paxmod-titlebar-display: ${options.displayTitlebar ? '-moz-box' : 'none'};
+      --paxmod-titlebar-visibility: ${options.displayTitlebar ? 'visible' : 'hidden'};
       --paxmod-background-color: var(${options.bgColorVar}, ${options.bgColor});
       --paxmod-foreground-color: var(${options.fgColorVar}, ${options.fgColor});
       --paxmod-icon-color: var(${options.iconColorVar}, ${options.iconColor});

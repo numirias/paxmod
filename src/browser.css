@@ -395,7 +395,8 @@
 #PersonalToolbar {
     font-family: var(--paxmod-font-family) !important;
     font-size: var(--paxmod-font-size) !important;
-    background: var(--paxmod-background-color) !important;
+    background-color: var(--paxmod-background-color) !important;
+    background-image: none !important;
     color: var(--paxmod-foreground-color) !important;
     padding: 0 !important;
     height: 25px !important;
@@ -413,4 +414,18 @@
 
 #PersonalToolbar .bookmark-item {
     padding: 0 4px !important;
+}
+
+/********** Remove titlebar **********/
+
+#main-window[sizemode="normal"] > #titlebar {
+    display: var(--paxmod-titlebar-display);
+}
+
+#titlebar {
+    visibility: var(--paxmod-titlebar-visibility);
+}
+
+#TabsToolbar > .titlebar-placeholder {
+    display: var(--paxmod-titlebar-display);
 }
