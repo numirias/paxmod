@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Paxmod",
-  "version": "1.4",
+  "version": "1.5",
   "homepage_url": "https://github.com/numirias/paxmod",
   "description": "Paxmod is a simple, customizable Firefox theme with multiple tab rows and site-dependent tab colors.",
   "applications": {
