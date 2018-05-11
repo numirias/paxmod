@@ -1,6 +1,5 @@
 let iconColor = (() => { // eslint-disable-line no-unused-vars
   const NS_XHTML = 'http://www.w3.org/1999/xhtml';
-  const defaultColor = [220, 220, 220];
 
   function labToRgb(lab) {
     let y = (lab[0] + 16) / 116;
@@ -72,6 +71,7 @@ let iconColor = (() => { // eslint-disable-line no-unused-vars
   }
 
   function dominantColor(img, minLightness, maxLightness) {
+    let defaultColor = ((maxLightness + minLightness) / 2 < 50) ? [50, 50, 50] : [205, 205, 205];
     let mostColorful = defaultColor;
     let freqs = {};
     let values = pixelColors(img);

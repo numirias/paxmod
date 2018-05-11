@@ -8,8 +8,8 @@
     <h1>Settings</h1>
 
     <div class="options">
-      <div><label for="enableColors">Enable tab colors</label></div>
-      <div><input id="enableColors" type="checkbox"></div>
+      <div><label for="enableIconColors">Dynamic tab colors</label></div>
+      <div><input id="enableIconColors" type="checkbox"></div>
 
       <div><label for="displayVersion">Display version info</label></div>
       <div><input id="displayVersion" type="checkbox"></div>
@@ -17,7 +17,7 @@
       <div><label for="displayNewtab">Display new tab button</label></div>
       <div><input id="displayNewtab" type="checkbox"></div>
 
-      <div><label for="displayTitlebar">Display titlebar <small>(Not recommended, as it may lead to layout glitches)</small><br><br></label></div>
+      <div><label for="displayTitlebar">Display title bar <small>(Not recommended, as it may lead to layout glitches)</small><br><br></label></div>
       <div><input id="displayTitlebar" type="checkbox"></div>
 
       <div><label for="fontFamily">Font family</label></div>
@@ -31,73 +31,26 @@
 
       <div><label for="maxLightness">Max. tab color lightness</label></div>
       <div><input id="maxLightness" type="number" min="0" max="100"> (0-100)</div>
+
+      <div><label for="userCSS">Path to custom CSS</label></div>
+      <div><input id="userCSS" type="text" placeholder="e.g. file:///home/john/custom.css"></div>
+
+      <div><label for="enableThemeColors">Custom theme colors</label></div>
+      <div><input id="enableThemeColors" type="checkbox"></div>
     </div>
 
     <div><h2>Colors</h2></div>
-    <div class="options">
-      <div><label for="fgColor">Text color</label></div>
-      <div>
-        <input id="fgColor" type="color">
-        Var: <input id="fgColorVar" type="text" class="var">
-      </div>
 
-      <div><label for="bgColor">Background color</label></div>
-      <div>
-        <input id="bgColor" type="color">
-        Var: <input id="bgColorVar" type="text" class="var">
-      </div>
-
-      <div><label for="iconColor">Icon color</label></div>
-      <div>
-        <input id="iconColor" type="color">
-        Var: <input id="iconColorVar" type="text" class="var">
-      </div>
-
-      <div><label for="gridColor">Grid color</label></div>
-      <div>
-        <input id="gridColor" type="color">
-        Var: <input id="gridColorVar" type="text" class="var">
-      </div>
-
-      <div><label for="urlbarColor">Urlbar background color</label></div>
-      <div>
-        <input id="urlbarColor" type="color">
-        Var: <input id="urlbarColorVar" type="text" class="var">
-      </div>
-
-      <div><label for="hoverColor">Hover color</label></div>
-      <div>
-        <input id="hoverColor" type="color">
-        Var: <input id="hoverColorVar" type="text" class="var">
-      </div>
-
-      <div><label for="outlineColorFocus">Tab border color (active)</label></div>
-      <div>
-        <input id="outlineColorFocus" type="color">
-        Var: <input id="outlineColorFocusVar" type="text" class="var">
-      </div>
-
-      <div><label for="tabBgColor">Tab background color</label></div>
-      <div>
-        <input id="tabBgColor" type="color">
-        Var: <input id="tabBgColorVar" type="text" class="var">
-      </div>
-
-      <div><label for="bgColorFocus">Tab background color (active)</label></div>
-      <div>
-        <input id="bgColorFocus" type="color">
-        Var: <input id="bgColorFocusVar" type="text" class="var">
-      </div>
-
-      <div><label for="userCSS">Path to custom CSS</label></div>
-      <div>
-        <input id="userCSS" type="text" placeholder="e.g. file:///home/john/custom.css">
-      </div>
+    <div>
+      The theme colors below are only applied if <i>Custom theme colors</i> is checked. See the <a href="https://github.com/numirias/paxmod#color-settings">README</a> for guidance on what the variables mean.<br><br>
     </div>
-
+    <div id="colors" class="options">
+      <!-- Filled by script -->
+    </div>
     <div class="optionButtons">
       <button type="submit" id="saveOptionsButton">Apply</button>
-      <button type="submit" id="resetOptionsButton">Restore defaults</button>
+      <button type="submit" id="resetDarkOptionsButton">Restore defaults (dark)</button>
+      <button type="submit" id="resetLightOptionsButton">Restore defaults (light)</button>
     </div>
 
     <script src="options.js"></script>
