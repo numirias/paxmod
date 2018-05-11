@@ -3,6 +3,17 @@
 const background = browser.extension.getBackgroundPage();
 
 function displayOptions() {
+  let allCode = '';
+  for (let color of background.themeColorVars) {
+    let code = `<div><label for="${color}"><small><code>${color}</code></small></label></div>
+    <div>
+      <input id="${color}" type="color">
+      Var: <input id="${color}_var" type="text" class="var">
+    </div>`;
+    allCode += code;
+  }
+  document.getElementById('colors').innerHTML = allCode;
+
   browser.storage.local.get().then(options => {
     for (let key in options) {
       let element = document.getElementById(key);
@@ -35,8 +46,8 @@ function saveOptions() {
   browser.storage.local.set(newOptions).then(background.applyOptions);
 }
 
-function resetOptions() {
-  browser.storage.local.set(background.defaultOptions).then(() => {
+function resetOptions(alt = false) {
+  browser.storage.local.set(!alt ? background.defaultOptions : background.defaultOptionsLight).then(() => {
     background.applyOptions();
     displayOptions();
   });
@@ -44,4 +55,5 @@ function resetOptions() {
 
 document.addEventListener('DOMContentLoaded', displayOptions);
 document.querySelector('#saveOptionsButton').addEventListener('click', saveOptions);
-document.querySelector('#resetOptionsButton').addEventListener('click', resetOptions);
+document.querySelector('#resetDarkOptionsButton').addEventListener('click', () => resetOptions());
+document.querySelector('#resetLightOptionsButton').addEventListener('click', () => resetOptions(true));
