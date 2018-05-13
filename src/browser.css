@@ -190,13 +190,16 @@
     margin-left: 1px;
     margin-top: 1px;
     outline: 1px solid var(--paxmod-grid-color) !important;
-    display: -moz-box !important;
+    /* Can't completely disable transitions, otherwise tabs have small pixel
+     * offsets after closing some tabs */
     transition-duration: .1ms !important;
 }
 
 /* Required to hide closing tabs */
 .tabbrowser-tab:not([pinned]):not([fadein]) {
-    display: none !important;
+    visibility: hidden !important;
+    max-width: 0px !important;
+    min-width: 0px !important;
 }
 
 .tabbrowser-tab[selected] {
@@ -220,7 +223,7 @@
 }
 
 .tabbrowser-tab:after {
-    /* Otherwise, a tabs outlined doesn't overlap the grid. */
+    /* Otherwise, a tab's outline doesn't overlap the grid. */
     display: none !important;
 }
 
