@@ -53,7 +53,33 @@ function resetOptions(alt = false) {
   });
 }
 
+function importOptions(e) {
+  let reader = new FileReader();
+  let newOptions = {};
+  reader.onload = (e => {
+    try {
+      newOptions = JSON.parse(e.target.result);
+    } catch (error) {
+      window.alert(error);
+      return;
+    }
+    browser.storage.local.set(newOptions).then(() => {
+      background.applyOptions();
+      displayOptions();
+    });
+  });
+  reader.readAsText(e.target.files[0]);
+}
+
+function exportOptions() {
+  browser.storage.local.get().then(options => {
+    window.open(`data:application/json,${escape(JSON.stringify(options))}`);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', displayOptions);
 document.querySelector('#saveOptionsButton').addEventListener('click', saveOptions);
 document.querySelector('#resetDarkOptionsButton').addEventListener('click', () => resetOptions());
 document.querySelector('#resetLightOptionsButton').addEventListener('click', () => resetOptions(true));
+document.querySelector('#importFile').addEventListener('change', importOptions);
+document.querySelector('#exportButton').addEventListener('click', exportOptions);
