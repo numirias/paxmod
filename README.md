@@ -1,12 +1,11 @@
 
 # Paxmod
 
-Paxmod is a Firefox theme with multiple tab rows and site-dependent tab colors. It provides a straightforward grid-style UI, lets you customize colors and fonts, and add your own custom CSS.
+Paxmod is a Firefox mod / theme with multiple tab rows and site-dependent tab colors. It offers a more dense grid-style UI, lets you customize colors and fonts, and add your own custom CSS.
 
 ### Light default
 
-![Demo light](https://i.imgur.com/Lb5rlsQ.png)
-
+![Demo light](https://i.imgur.com/p0lOtuV.png)
 
 ### Dark default
 
@@ -60,8 +59,7 @@ Paxmod needs to be able to modify the browser UI, a feature for which there is n
 
 ### Where did the title bar go?
 
-I couldn't find a good and reliable way to integrate the inline title bar into the theme, so it's removed by default. You can re-enable it in the settings, but expect layout glitches. Try keyboard shortcuts instead. Also, if you think you found a way to integrate the title bar into the theme with pure CSS, feel free to submit a PR.
-
+I couldn't find a good and reliable way to integrate the inline title bar into the theme, so it's removed by default. You can re-enable it in the settings, but expect layout glitches. Try to use keyboard shortcuts instead (you can also press <kbd>Alt</kbd> to show the menu bar). If you think you know a way to integrate the title bar into the theme with pure CSS, feel free to submit a PR.
 
 ### How are tab colors calculated?
 
@@ -73,9 +71,13 @@ Each tab color is generated dynamically from the favicon. A dominant color is ex
 
 If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that turning the checks off has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly. (Also, if you used a previous version of Paxmod, make sure you uninstall the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment) which is not required anymore.)
 
-### The design looks off.
+### The layout looks off.
 
-Paxmod is mainly tested on Linux, so there are most likely some design quirks on MacOS or Windows that I'm not aware of. If in doubt, please [file an issue](https://github.com/numirias/paxmod/issues/new). Any help with making Paxmod compatible with other OSes is more than welcome.
+Paxmod is mainly tested on Linux, so there are most likely some quirks on MacOS or Windows that I'm not aware of. If in doubt, please [file an issue](https://github.com/numirias/paxmod/issues/new). Any help with making Paxmod compatible with other OSes is more than welcome.
+
+### Dragging tabs around isn't smooth.
+
+Tab dragging doesn't work to well with multi-row tabs and I couldn't find a CSS-only fix. Instead, you may want to use the shortcuts <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>PgUp</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>PgDn</kbd> to re-arrange the tabs.
 
 ### The font looks bad.
 
