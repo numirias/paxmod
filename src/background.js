@@ -74,6 +74,9 @@ var defaultOptions = { // eslint-disable-line no-var
   displayTitlebar: false,
   fontFamily: 'Terminus, Tamsyn, Consolas, monospace',
   fontSize: 12,
+  tabSize: 10,
+  minTabSize: 150,
+  maxTabSize: 300,
   minLightness: 59,
   maxLightness: 100,
   userCSS: '',
@@ -166,6 +169,9 @@ function makeDynamicSheet(options) {
     :root {
       --paxmod-version: '${version}';
       --paxmod-font-size: ${options.fontSize}px;
+      --paxmod-tab-size: ${options.tabSize}%;
+      --paxmod-min-tab-size: ${options.minTabSize}px;
+      --paxmod-max-tab-size: ${options.maxTabSize}px;
       --paxmod-font-family: ${options.fontFamily};
       --paxmod-display-version: ${options.displayVersion ? 'block' : 'none'};
       --paxmod-display-newtab: ${options.displayNewtab ? 'block' : 'none'};
