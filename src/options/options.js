@@ -73,7 +73,18 @@ function importOptions(e) {
 
 function exportOptions() {
   browser.storage.local.get().then(options => {
-    window.open(`data:application/json,${escape(JSON.stringify(options))}`);
+    let file = new Blob([JSON.stringify(options)], {type: 'application/json'});
+    let a = document.createElement('a');
+    let url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = 'paxmod-settings.json';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }, 0);
+
   });
 }
 
