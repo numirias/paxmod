@@ -31,9 +31,10 @@ function displayOptions() {
 
 function saveOptions() {
   let newOptions = {};
-  for (let field of document.querySelectorAll('input')) {
-    let value = field.type === 'checkbox' ? field.checked : field.value;
-    newOptions[field.id] = value;
+  for (let key in background.defaultOptions) {
+    let element = document.getElementById(key);
+    let value = element.type === 'checkbox' ? element.checked : element.value;
+    newOptions[key] = value;
   }
   if (!/^([a-zA-Z0-9.,-_+=()\s]+)$/.test(newOptions.fontFamily)) {
     window.alert('Font family must match: /^([a-zA-Z0-9.,-_+=()\\s]+)$/');

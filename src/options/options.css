@@ -35,12 +35,17 @@ input[type="number"] {
     height: 20px;
 }
 
+textarea,
 input[type="text"] {
     width: 300px;
 }
 
 input[type="checkbox"] {
     display: block;
+}
+
+textarea {
+  height: 100px;
 }
 
 .var {

@@ -81,6 +81,7 @@ var defaultOptions = { // eslint-disable-line no-var
   minLightness: 59,
   maxLightness: 100,
   userCSS: '',
+  userCSSCode: '',
   enableThemeColors: true,
   accentcolor: darkPalette.bg,
   button_background_active: darkPalette.bg1,
@@ -167,6 +168,7 @@ function makeDynamicSheet(options) {
     // but keeps the API small.
     let rules = `
     @import url('${options.userCSS}');
+    @import url('data:text/css;base64,${btoa(options.userCSSCode)}');
     :root {
       --paxmod-version: '${version}';
       --paxmod-font-size: ${options.fontSize}px;
