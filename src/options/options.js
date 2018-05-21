@@ -5,7 +5,8 @@ const background = browser.extension.getBackgroundPage();
 function displayOptions() {
   let allCode = '';
   for (let color of background.themeColorVars) {
-    let code = `<div><label for="${color}"><small><code>${color}</code></small></label></div>
+    let hint = background.themeColorHints[color] ? `<div class="hint">(${background.themeColorHints[color]})</div>` : '';
+    let code = `<div><label for="${color}"><small><code>${color}</code> ${hint}</small></label></div>
     <div>
       <input id="${color}" type="color">
       Var: <input id="${color}_var" type="text" class="var">

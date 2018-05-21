@@ -4,20 +4,23 @@
 :root {
     --paxmod-grid-color: var(--lwt-toolbar-field-border-color) !important;
     --paxmod-outline-color-focus: var(--toolbar-field-focus-border-color) !important;
+
+    /* No special background for back button when hovering */
+    --backbutton-hover-background: var(--toolbarbutton-hover-background);
 }
 
-#urlbar {
+/* This includes the search box and urlbar */
+#nav-bar toolbaritem textbox {
     padding: 0 !important;
     margin: 0 !important;
     border: 0 !important;
     border-radius: 0 !important;
     min-height: 0 !important;
     height: 24px !important;
-    border-right: 1px solid var(--paxmod-grid-color) !important;
-    border-left: 1px solid var(--paxmod-grid-color) !important;
 }
 
-#urlbar,
+#nav-bar toolbaritem textbox,
+#nav-bar toolbaritem label,
 #urlbar-zoom-button,
 #tabbrowser-tabs::before,
 .tabbrowser-tab,
@@ -28,13 +31,6 @@
 
 #nav-bar {
     padding: 0 !important;
-    /* Needed to overlap with tab outline above. */
-    margin-top: -1px !important;
-}
-
-#navigator-toolbox #TabsToolbar:not([collapsed="true"]) + #nav-bar {
-    border: 1px solid var(--paxmod-grid-color) !important;
-    box-shadow: none !important;
 }
 
 #TabsToolbar .private-browsing-indicator {
@@ -53,7 +49,7 @@
 }
 
 #nav-bar > #nav-bar-customization-target .toolbarbutton-icon,
-#nav-bar .toolbarbutton-icon,
+#nav-bar > toolbarbutton .toolbarbutton-icon,
 #nav-bar .urlbar-icon {
     width: 24px !important;
     height: 24px !important;
@@ -71,23 +67,17 @@
 /* The burger menu button right to the address bar */
 #nav-bar #PanelUI-button {
     margin: 0 !important;
-    border: none !important;
 }
 
 /* Inside the burger menu right to the address bar */
 .toolbarbutton-badge-stack {
-    padding: 0 !important;
+    padding: 4px !important;
     border-radius: 0 !important;
 }
 
 #identity-box {
     padding-inline-start: 4px !important;
     padding-inline-end: 4px !important;
-}
-
-#navigator-toolbox::after {
-    /* No bottom border between navigator toolbox and site content */
-    border: none !important;
 }
 
 #urlbar-zoom-button {
@@ -97,15 +87,16 @@
     border-radius: 0 !important;
 }
 
-/********** Navigation Buttons **********/
-
-#back-button .toolbarbutton-icon {
-    width: 16px !important;
-    height: 16px !important;
-    border: none !important;
+/* Required for the zoom-controls toolbar item */
+#nav-bar toolbaritem label {
+    min-height: 12px !important;
+    padding: 4px !important;
 }
 
+/********** Navigation Buttons **********/
+
 #back-button > .toolbarbutton-icon {
+    border: none !important;
     /* No special background for back button */
     background-color: inherit !important;
 }
@@ -218,7 +209,7 @@
 }
 
 .tabbrowser-tab:hover {
-    outline: 1px dashed var(--paxmod-outline-color-focus) !important;
+    outline: 1px solid var(--paxmod-outline-color-focus) !important;
     z-index: 2 !important;
 }
 
@@ -255,11 +246,6 @@
     margin: 0 !important;
 }
 
-.tab-icon-image:not([src]) {
-    outline: 1px dashed #555 !important;
-    outline-offset: -1px;
-}
-
 /* Show close button only when hovering */
 
 .tabbrowser-tab .tab-close-button {
@@ -281,8 +267,6 @@
 #PersonalToolbar {
     padding: 0 !important;
     height: 25px !important; /* That's 24px + border */
-    border: 1px solid var(--paxmod-grid-color) !important;
-    border-top: none !important;
 }
 
 #PersonalToolbar toolbarbutton {

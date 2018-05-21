@@ -42,7 +42,7 @@ You can change the font, colors and other settings at `about:addons` > *Extensio
 
 Paxmod can work alongside other themes. It will either pick up the colors of the theme that's enabled at `about:addons` > *Themes*, or you can pick your own colors after enabling *Custom theme colors* in the settings.
 
-The color variables work as described [in the MDN docs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/theme#colors), with some differences: `toolbar_field_border_focus` is the border color of the active tab, `toolbar_field_border` is the color of the entire grid and `toolbar_top_separator`, `toolbar_bottom_separator` and `toolbar_vertical_separator` are not used at all.
+The color variables work as described [in the MDN docs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/theme#colors) with the difference that `toolbar_field_border` and `toolbar_field_border_focus` are the colors of the normal and active tab border.
 
 ### Custom CSS
 

@@ -30,6 +30,10 @@ var themeColorVars = [ // eslint-disable-line no-var
   'toolbar_top_separator',
   'toolbar_vertical_separator',
 ];
+var themeColorHints = {
+  'toolbar_field_border': 'Tab border',
+  'toolbar_field_border_focus': 'Tab border focused',
+};
 const themeColorCSSDefaults = {
   accentcolor: '--background',
   button_background_active: '--color1',
@@ -46,7 +50,7 @@ const themeColorCSSDefaults = {
   tab_text: '--foreground',
   textcolor: '--foreground',
   toolbar: '--color0',
-  toolbar_bottom_separator: '--color15',
+  toolbar_bottom_separator: '--background',
   toolbar_field: '--color1',
   toolbar_field_border: '--background',
   toolbar_field_border_focus: '--background',
@@ -55,8 +59,8 @@ const themeColorCSSDefaults = {
   toolbar_field_text_focus: '--foreground',
   toolbar_field_separator: '--color5',
   toolbar_text: '--foreground',
-  toolbar_top_separator: '--color15',
-  toolbar_vertical_separator: '--color15',
+  toolbar_top_separator: '--background',
+  toolbar_vertical_separator: '--background',
 };
 const darkPalette = {
   bg: '#111111',
@@ -98,7 +102,7 @@ var defaultOptions = { // eslint-disable-line no-var
   tab_text: darkPalette.fg,
   textcolor: darkPalette.fg,
   toolbar: darkPalette.bg0,
-  toolbar_bottom_separator: '#ff0000', // Not in use
+  toolbar_bottom_separator: darkPalette.bg,
   toolbar_field: darkPalette.bg1,
   toolbar_field_border: darkPalette.bg, // Grid color
   toolbar_field_border_focus: darkPalette.bg, // Focused tab outline
@@ -107,8 +111,8 @@ var defaultOptions = { // eslint-disable-line no-var
   toolbar_field_text_focus: darkPalette.fg,
   toolbar_field_separator: '#444444',
   toolbar_text: darkPalette.fg,
-  toolbar_top_separator: '#ff0000', // Not in use
-  toolbar_vertical_separator: '#ff0000', // Not in use
+  toolbar_top_separator: darkPalette.bg,
+  toolbar_vertical_separator: darkPalette.bg3,
 };
 for (let color in themeColorCSSDefaults) {
   defaultOptions[`${color}_var`] = themeColorCSSDefaults[color];
@@ -144,6 +148,7 @@ var defaultOptionsLight = { // eslint-disable-line no-var
   tab_text: lightPalette.fg,
   textcolor: lightPalette.fg,
   toolbar: lightPalette.bg0,
+  toolbar_bottom_separator: lightPalette.bg,
   toolbar_field: lightPalette.bg2, // Url bar field
   toolbar_field_border: lightPalette.bg, // Grid color
   toolbar_field_border_focus: lightPalette.bg, // Focused tab outline
@@ -152,6 +157,8 @@ var defaultOptionsLight = { // eslint-disable-line no-var
   toolbar_field_text_focus: lightPalette.fg,
   toolbar_field_separator: '#cccccc',
   toolbar_text: lightPalette.fg,
+  toolbar_top_separator: lightPalette.bg,
+  toolbar_vertical_separator: lightPalette.fg1,
 };
 let cachedOptions = {};
 // In currentOptionsSheet we keep track of the dynamic stylesheet that applies
