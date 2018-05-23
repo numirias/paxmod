@@ -13,10 +13,11 @@
 #nav-bar toolbaritem textbox {
     padding: 0 !important;
     margin: 0 !important;
-    border: 0 !important;
+    border: none !important;
     border-radius: 0 !important;
     min-height: 0 !important;
     height: 24px !important;
+    box-shadow: none !important;
 }
 
 #nav-bar toolbaritem textbox,
@@ -168,6 +169,11 @@
     padding-right: 1px;
 }
 
+.tabbrowser-arrowscrollbox .scrollbox-innerbox {
+    /* Tab row is at least as high as the titlebar buttonbox */
+    min-height: var(--paxmod-titlebar-min-height, var(--tab-min-height)) !important;
+}
+
 /********** Single tab **********/
 
 .tabbrowser-tab {
@@ -175,6 +181,7 @@
     min-width: var(--paxmod-min-tab-size) !important;
     max-width: var(--paxmod-max-tab-size) !important;
     flex-grow: 1;
+    align-self: flex-end;
     padding: 0 !important;
     height: 24px !important;
     /* Align tabs with grid */
@@ -277,32 +284,28 @@
 
 #titlebar {
     visibility: var(--paxmod-titlebar-visibility);
-    height: calc(var(--tab-min-height) + calc(var(--tab-min-height) - 26px)) !important;
+    height: var(--tab-min-height) !important;
     margin-bottom: calc(0px - var(--tab-min-height)) !important;
+}
+
+#main-window[sizemode="maximized"] #titlebar {
+    margin-bottom:calc(var(--paxmod-titlebar-margin) - var(--tab-min-height)) !important;
 }
 
 #main-window[sizemode="normal"] > #titlebar {
     display: var(--paxmod-titlebar-display);
 }
 
-#main-window[sizemode="maximized"] #titlebar {
-    margin-bottom: calc(var(--paxmod-titlebar-margin) - var(--tab-min-height)) !important;
-}
-
-#titlebar:active #titlebar-content {
-    margin-bottom: var(--tab-min-height) !important;
+#titlebar-buttonbox {
+    max-height: var(--tab-min-height) !important;
 }
 
 #TabsToolbar > .titlebar-placeholder {
-    display: var(--paxmod-titlebar-display);
-}
-
-#titlebar-buttonbox {
-    height: var(--tab-min-height) !important;
+    display: var(--paxmod-titlebar-display) !important;
 }
 
 .titlebar-placeholder[type="post-tabs"],
 .titlebar-placeholder[type="pre-tabs"] {
-    width: 0 !important;
+    max-width: var(--paxmod-titlebar-placeholders) !important;
     border: none !important;
 }

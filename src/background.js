@@ -77,6 +77,7 @@ var defaultOptions = { // eslint-disable-line no-var
   displayVersion: false,
   displayNewtab: false,
   displayTitlebar: false,
+  displayPlaceholders: false,
   fontFamily: 'Terminus, Tamsyn, Consolas, monospace',
   fontSize: 12,
   tabSize: 10,
@@ -186,8 +187,10 @@ function makeDynamicSheet(options) {
       --paxmod-display-version: ${options.displayVersion ? 'block' : 'none'};
       --paxmod-display-newtab: ${options.displayNewtab ? 'block' : 'none'};
       --paxmod-titlebar-display: ${options.displayTitlebar ? '-moz-box' : 'none'};
+      --paxmod-titlebar-min-height: ${options.displayTitlebar ? 'var(--undefined)' : '0px'};
       --paxmod-titlebar-visibility: ${options.displayTitlebar ? 'visible' : 'hidden'};
       --paxmod-titlebar-margin: ${options.displayTitlebar ? '8px' : '1px'};
+      --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
     }`;
     // CSS rules are base64-encoded because the native StyleSheetService API
     // can't handle some special chars.
