@@ -273,16 +273,36 @@
     padding: 0 4px !important;
 }
 
-/********** Remove titlebar **********/
+/********** Titlebar **********/
+
+#titlebar {
+    visibility: var(--paxmod-titlebar-visibility);
+    height: calc(var(--tab-min-height) + calc(var(--tab-min-height) - 26px)) !important;
+    margin-bottom: calc(0px - var(--tab-min-height)) !important;
+}
 
 #main-window[sizemode="normal"] > #titlebar {
     display: var(--paxmod-titlebar-display);
 }
 
-#titlebar {
-    visibility: var(--paxmod-titlebar-visibility);
+#main-window[sizemode="maximized"] #titlebar {
+    margin-bottom: calc(var(--paxmod-titlebar-margin) - var(--tab-min-height)) !important;
+}
+
+#titlebar:active #titlebar-content {
+    margin-bottom: var(--tab-min-height) !important;
 }
 
 #TabsToolbar > .titlebar-placeholder {
     display: var(--paxmod-titlebar-display);
+}
+
+#titlebar-buttonbox {
+    height: var(--tab-min-height) !important;
+}
+
+.titlebar-placeholder[type="post-tabs"],
+.titlebar-placeholder[type="pre-tabs"] {
+    width: 0 !important;
+    border: none !important;
 }

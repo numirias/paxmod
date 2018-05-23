@@ -187,6 +187,7 @@ function makeDynamicSheet(options) {
       --paxmod-display-newtab: ${options.displayNewtab ? 'block' : 'none'};
       --paxmod-titlebar-display: ${options.displayTitlebar ? '-moz-box' : 'none'};
       --paxmod-titlebar-visibility: ${options.displayTitlebar ? 'visible' : 'hidden'};
+      --paxmod-titlebar-margin: ${options.displayTitlebar ? '8px' : '1px'};
     }`;
     // CSS rules are base64-encoded because the native StyleSheetService API
     // can't handle some special chars.

@@ -57,9 +57,9 @@ Each color in the settings has a *Var* field where you can specify the name of a
 
 Paxmod needs to be able to modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that ships included in the add-on. Unfortunately, this means Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
 
-### Where did the title bar go?
+### Where did the titlebar go?
 
-I couldn't find a good and reliable way to integrate the inline title bar into the theme, so it's removed by default. You can re-enable it in the settings, but expect layout glitches. Try to use keyboard shortcuts instead (you can also press <kbd>Alt</kbd> to show the menu bar). If you think you know a way to integrate the title bar into the theme with pure CSS, feel free to submit a PR.
+The inline titlebar is hidden by default, but you can re-enable it in the settings. If it doesn't integrate into the layout as expected, please [file an issue](https://github.com/numirias/paxmod/issues/new). (Note that some environments don't support an inline titlebar at all.)
 
 ### How are tab colors calculated?
 
