@@ -32,11 +32,13 @@ You can change the font, colors and other settings at `about:addons` > *Extensio
 
 ### Tips
 
+- If the inline titlebar causes glitches or you think it's wasting too much space, [enable the standard titlebar](#the-inline-titlebar-causes-glitches).
+
+- Disable UI animations for less jiggly tab movement. (Go to `about:config` and set `toolkit.cosmeticAnimations.enabled` to `false`.)
+
 - If you want Paxmod to look exactly the same as in the dark demo, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry. But you can set any font you like.
 
 - Remove clutter from the toolbar to get a cleaner UI. Open the burger menu (☰), click *Customize* and drag away unneeded items (in particular, remove the invisible placeholders to get rid of the empty space).
-
-- Disable UI animations for less jiggly tab movement. (Go to `about:config` and set `toolkit.cosmeticAnimations.enabled` to `false`.)
 
 ### Color settings
 
@@ -70,6 +72,10 @@ Each tab color is generated dynamically from the favicon. A dominant color is ex
 ### I can't install the add-on.
 
 If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that turning the checks off has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly. (Also, if you used a previous version of Paxmod, make sure you uninstall the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment) which is not required anymore.)
+
+### The inline titlebar causes glitches.
+
+Especially on MacOS, the inline titlebar may not work as expected. In that case you need to enable the standard titlebar. (Open the burger menu (☰), click *Customize* and check *Title Bar* at the bottom.) Also, go to the addon settings and uncheck *Display inline titlebar* and *Display titlebar placeholders*.
 
 ### The layout looks off.
 
