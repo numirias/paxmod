@@ -261,7 +261,9 @@
 }
 
 .tabbrowser-tab:hover .tab-close-button {
-    display: -moz-box !important;
+    /* We'd want display: -moz-box, but the property isn't accepted in FF>=63,
+     * so achieve the effect with inherit */
+    display: inherit !important;
 }
 
 .tabbrowser-tab[pinned]:hover .tab-close-button {
