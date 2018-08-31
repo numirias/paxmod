@@ -186,12 +186,15 @@ function makeDynamicSheet(options) {
       --paxmod-font-family: ${options.fontFamily};
       --paxmod-display-version: ${options.displayVersion ? 'block' : 'none'};
       --paxmod-display-newtab: ${options.displayNewtab ? 'block' : 'none'};
-      --paxmod-titlebar-display: ${options.displayTitlebar ? '-moz-box' : 'none'};
+      --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
       --paxmod-titlebar-min-height: ${options.displayTitlebar ? 'var(--undefined)' : '0px'};
       --paxmod-titlebar-visibility: ${options.displayTitlebar ? 'visible' : 'hidden'};
       --paxmod-titlebar-margin: ${options.displayTitlebar ? '8px' : '1px'};
       --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
     }`;
+    // -webkit-box is used as a replacement for -moz-box which doesn't seem to
+    // work in FF >= 63. That's possibly an internal bug.
+
     // CSS rules are base64-encoded because the native StyleSheetService API
     // can't handle some special chars.
     return `data:text/css;base64,${btoa(rules)}`;
