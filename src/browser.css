@@ -126,7 +126,8 @@
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;
-    display: var(--paxmod-display-newtab);
+    display: var(--paxmod-display-newtab) !important;
+    align-self: flex-end;
 }
 
 #tabbrowser-tabs .tabs-newtab-button .toolbarbutton-icon {
@@ -262,8 +263,8 @@
 
 .tabbrowser-tab:hover .tab-close-button {
     /* We'd want display: -moz-box, but the property isn't accepted in FF>=63,
-     * so achieve the effect with inherit */
-    display: inherit !important;
+     * so achieve the effect with -webkit-box */
+    display: -webkit-box !important;
 }
 
 .tabbrowser-tab[pinned]:hover .tab-close-button {

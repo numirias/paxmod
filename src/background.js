@@ -185,7 +185,7 @@ function makeDynamicSheet(options) {
       --paxmod-max-tab-size: ${options.maxTabSize}px;
       --paxmod-font-family: ${options.fontFamily};
       --paxmod-display-version: ${options.displayVersion ? 'block' : 'none'};
-      --paxmod-display-newtab: ${options.displayNewtab ? 'block' : 'none'};
+      --paxmod-display-newtab: ${options.displayNewtab ? '-webkit-box' : 'none'};
       --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
       --paxmod-titlebar-min-height: ${options.displayTitlebar ? 'var(--undefined)' : '0px'};
       --paxmod-titlebar-visibility: ${options.displayTitlebar ? 'visible' : 'hidden'};
