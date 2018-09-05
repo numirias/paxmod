@@ -128,6 +128,8 @@
     border: none !important;
     display: var(--paxmod-display-newtab) !important;
     align-self: flex-end;
+    /* In some configurations the button may be hidden */
+    visibility: visible !important;
 }
 
 #tabbrowser-tabs .tabs-newtab-button .toolbarbutton-icon {
