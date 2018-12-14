@@ -76,7 +76,7 @@ var defaultOptions = { // eslint-disable-line no-var
   enableIconColors: true,
   displayVersion: false,
   displayNewtab: false,
-  displayTitlebar: false,
+  displayTitlebar: true,
   displayPlaceholders: false,
   fontFamily: 'Terminus, Tamsyn, Consolas, monospace',
   fontSize: 12,
@@ -187,9 +187,6 @@ function makeDynamicSheet(options) {
       --paxmod-display-version: ${options.displayVersion ? 'block' : 'none'};
       --paxmod-display-newtab: ${options.displayNewtab ? '-webkit-box' : 'none'};
       --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
-      --paxmod-titlebar-min-height: ${options.displayTitlebar ? 'var(--undefined)' : '0px'};
-      --paxmod-titlebar-visibility: ${options.displayTitlebar ? 'visible' : 'hidden'};
-      --paxmod-titlebar-margin: ${options.displayTitlebar ? '8px' : '1px'};
       --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
     }`;
     // -webkit-box is used as a replacement for -moz-box which doesn't seem to

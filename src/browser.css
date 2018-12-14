@@ -172,11 +172,6 @@
     padding-right: 1px;
 }
 
-.tabbrowser-arrowscrollbox .scrollbox-innerbox {
-    /* Tab row is at least as high as the titlebar buttonbox */
-    min-height: var(--paxmod-titlebar-min-height, var(--tab-min-height)) !important;
-}
-
 /********** Single tab **********/
 
 .tabbrowser-tab {
@@ -256,13 +251,13 @@
     margin: 0 !important;
 }
 
-/* Show close button only when hovering */
-
+/* Hide close button by default... */
 .tabbrowser-tab .tab-close-button {
     display: none !important;
     margin-top: 0 !important;
 }
 
+/* ...and show it when hovering. */
 .tabbrowser-tab:hover .tab-close-button {
     /* We'd want display: -moz-box, but the property isn't accepted in FF>=63,
      * so achieve the effect with -webkit-box */
@@ -287,26 +282,15 @@
 
 /********** Titlebar **********/
 
-#titlebar {
-    visibility: var(--paxmod-titlebar-visibility);
-    height: var(--tab-min-height) !important;
-    margin-bottom: calc(0px - var(--tab-min-height)) !important;
-}
-
-#main-window[sizemode="maximized"] #titlebar {
-    margin-bottom:calc(var(--paxmod-titlebar-margin) - var(--tab-min-height)) !important;
-}
-
-#main-window[sizemode="normal"] > #titlebar {
+#titlebar .titlebar-buttonbox-container {
+    /* Give users an option to hide the min/max/close buttions */
     display: var(--paxmod-titlebar-display);
 }
 
-#titlebar-buttonbox {
-    max-height: var(--tab-min-height) !important;
-}
-
-#TabsToolbar > .titlebar-spacer {
-    display: var(--paxmod-titlebar-display) !important;
+#titlebar .titlebar-buttonbox {
+    /* Otherwise, the inline min/max/close buttons on Windows (and maybe MacOS)
+     * will stretch to the full height of multiple tab rows */
+    display: inline-block;
 }
 
 .titlebar-spacer[type="post-tabs"],
