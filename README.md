@@ -75,7 +75,7 @@ If Firefox complains that the add-on isn't verified, you probably didn't turn ex
 
 ### The inline titlebar causes glitches.
 
-Especially on MacOS, the inline titlebar may not work as expected. In that case you need to enable the standard titlebar. (Open the burger menu (☰), click *Customize* and check *Title Bar* at the bottom.) Also, go to the addon settings and uncheck *Display inline titlebar* and *Display titlebar placeholders*.
+Especially on MacOS, the inline titlebar may not work as expected. In that case you need to enable the standard titlebar. (Open the burger menu (☰), click *Customize* and check *Title Bar* at the bottom.) Also, go to the addon settings and uncheck *Display inline titlebar* and *Display titlebar spacers*.
 
 ### The layout looks off.
 
