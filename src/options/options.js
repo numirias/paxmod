@@ -91,8 +91,10 @@ function exportOptions() {
 }
 
 document.addEventListener('DOMContentLoaded', displayOptions);
-document.querySelector('#saveOptionsButton').addEventListener('click', saveOptions);
-document.querySelector('#resetDarkOptionsButton').addEventListener('click', () => resetOptions());
-document.querySelector('#resetLightOptionsButton').addEventListener('click', () => resetOptions(true));
+
+document.querySelectorAll('.saveOptionsButton').forEach(x => x.addEventListener('click', saveOptions));
+document.querySelectorAll('.resetDarkOptionsButton').forEach(x => x.addEventListener('click', () => resetOptions()));
+document.querySelectorAll('.resetLightOptionsButton').forEach(x => x.addEventListener('click', () => resetOptions(true)));
+
 document.querySelector('#importFile').addEventListener('change', importOptions);
 document.querySelector('#exportButton').addEventListener('click', exportOptions);

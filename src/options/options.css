@@ -19,7 +19,8 @@ h2 {
 .options {
     display: grid;
     align-items: center;
-    grid-template-columns: 260px auto;
+    grid-template-columns: 270px auto;
+    margin: 20px 0;
 }
 
 .options div {
@@ -27,7 +28,7 @@ h2 {
 }
 
 .optionButtons {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 input[type="number"] {

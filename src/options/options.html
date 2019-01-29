@@ -7,6 +7,12 @@
   <body>
     <h1>Settings</h1>
 
+    <div class="optionButtons">
+      <button type="submit" class="saveOptionsButton">Apply</button>
+      <button type="submit" class="resetDarkOptionsButton">Restore defaults (dark)</button>
+      <button type="submit" class="resetLightOptionsButton">Restore defaults (light)</button>
+    </div>
+
     <div class="options">
       <div><label for="enableIconColors">Dynamic tab colors</label></div>
       <div><input id="enableIconColors" type="checkbox"></div>
@@ -77,9 +83,9 @@
     </div>
 
     <div class="optionButtons">
-      <button type="submit" id="saveOptionsButton">Apply</button>
-      <button type="submit" id="resetDarkOptionsButton">Restore defaults (dark)</button>
-      <button type="submit" id="resetLightOptionsButton">Restore defaults (light)</button>
+      <button type="submit" class="saveOptionsButton">Apply</button>
+      <button type="submit" class="resetDarkOptionsButton">Restore defaults (dark)</button>
+      <button type="submit" class="resetLightOptionsButton">Restore defaults (light)</button>
     </div>
 
     <script src="options.js"></script>
