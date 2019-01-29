@@ -253,7 +253,7 @@
 
 /* Hide close button by default... */
 .tabbrowser-tab .tab-close-button {
-    display: none !important;
+    display: var(--paxmod-display-close-button);
     margin-top: 0 !important;
 }
 
@@ -261,12 +261,12 @@
 .tabbrowser-tab:hover .tab-close-button {
     /* We'd want display: -moz-box, but the property isn't accepted in FF>=63,
      * so achieve the effect with -webkit-box */
-    display: -webkit-box !important;
+    display: -webkit-box;
 }
 
-.tabbrowser-tab[pinned]:hover .tab-close-button {
+.tabbrowser-tab[pinned] .tab-close-button {
     /* Otherwise, the pinned tab takes exessive space */
-    display: none !important;
+    display: none;
 }
 
 /********** Bookmarks Toolbar **********/

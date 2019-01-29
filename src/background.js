@@ -78,6 +78,7 @@ var defaultOptions = { // eslint-disable-line no-var
   displayNewtab: false,
   displayTitlebar: true,
   displayPlaceholders: false,
+  displayCloseButton: false,
   fontFamily: 'Terminus, Tamsyn, Consolas, monospace',
   fontSize: 12,
   tabSize: 10,
@@ -188,6 +189,7 @@ function makeDynamicSheet(options) {
       --paxmod-display-newtab: ${options.displayNewtab ? '-webkit-box' : 'none'};
       --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
       --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
+      --paxmod-display-close-button: ${options.displayCloseButton ? '-webkit-box' : 'none'};
     }`;
     // -webkit-box is used as a replacement for -moz-box which doesn't seem to
     // work in FF >= 63. That's possibly an internal bug.
