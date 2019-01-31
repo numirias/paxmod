@@ -1,105 +1,13 @@
 /* Only apply CSS to XUL windows */
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-:root {
-    --paxmod-grid-color: var(--lwt-toolbar-field-border-color) !important;
-    --paxmod-outline-color-focus: var(--toolbar-field-focus-border-color) !important;
-
-    /* No special background for back button when hovering */
-    --backbutton-hover-background: var(--toolbarbutton-hover-background);
-}
-
-/* This includes the search box and urlbar */
-#nav-bar toolbaritem textbox {
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    border-radius: 0 !important;
-    min-height: 0 !important;
-    height: 24px !important;
-    box-shadow: none !important;
-}
-
 #nav-bar toolbaritem textbox,
 #nav-bar toolbaritem label,
 #urlbar-zoom-button,
-#tabbrowser-tabs::before,
 .tabbrowser-tab,
 #PersonalToolbar {
     font-family: var(--paxmod-font-family) !important;
     font-size: var(--paxmod-font-size) !important;
-}
-
-#nav-bar {
-    padding: 0 !important;
-}
-
-#TabsToolbar .private-browsing-indicator {
-    width: 16px !important;
-    height: 16px !important;
-}
-
-#nav-bar > #nav-bar-customization-target toolbarbutton,
-#PersonalToolbar toolbarbutton,
-#nav-bar #nav-bar-overflow-button,
-#PanelUI-menu-button {
-    padding: 0 !important;
-    margin: 0 !important;
-    min-width: 24px !important;
-    border-radius: 0 !important;
-}
-
-#nav-bar > #nav-bar-customization-target .toolbarbutton-icon,
-#nav-bar > toolbarbutton .toolbarbutton-icon,
-#nav-bar .urlbar-icon {
-    width: 24px !important;
-    height: 24px !important;
-    padding: 4px !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-}
-
-/* The dropdown arrow in the urlbar */
-#nav-bar .urlbar-history-dropmarker {
-    width: 16px !important;
-    padding: 0 !important;
-}
-
-/* The burger menu button right to the address bar */
-#nav-bar #PanelUI-button {
-    margin: 0 !important;
-}
-
-/* Inside the burger menu right to the address bar */
-.toolbarbutton-badge-stack {
-    padding: 4px !important;
-    border-radius: 0 !important;
-}
-
-#identity-box {
-    padding-inline-start: 4px !important;
-    padding-inline-end: 4px !important;
-}
-
-#urlbar-zoom-button {
-    height: 24px !important;
-    padding: 4px !important;
-    border: none !important;
-    border-radius: 0 !important;
-}
-
-/* Required for the zoom-controls toolbar item */
-#nav-bar toolbaritem label {
-    min-height: 12px !important;
-    padding: 4px !important;
-}
-
-/********** Navigation Buttons **********/
-
-#back-button > .toolbarbutton-icon {
-    border: none !important;
-    /* No special background for back button */
-    background-color: inherit !important;
 }
 
 /********** Tabs **********/
@@ -111,6 +19,8 @@
 
 #tabbrowser-tabs .scrollbutton-up,
 #tabbrowser-tabs .scrollbutton-down {
+    /* Doesn't make sense to scroll through multi-row tabs since they are all
+     * visible */
     display: none !important;
 }
 
@@ -123,53 +33,28 @@
 }
 
 #tabbrowser-tabs .tabs-newtab-button {
-    padding: 0 !important;
     margin: 0 !important;
-    border: none !important;
     display: var(--paxmod-display-newtab) !important;
     align-self: flex-end;
     /* In some configurations the button may be hidden */
     visibility: visible !important;
 }
 
-#tabbrowser-tabs .tabs-newtab-button .toolbarbutton-icon {
-    width: 24px !important;
-    height: 24px !important;
-    padding: 4px !important;
-    border-radius: 0 !important;
-}
-
-#tabbrowser-tabs .tabbrowser-arrowscrollbox,
-#tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox {
+#tabbrowser-tabs .tabbrowser-arrowscrollbox {
+    /* Required, so the scrollbox always shows all tabs */
     display: block;
 }
 
-#tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox > box {
+#tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox {
     width: 100% !important;
     display: flex !important;
     flex-wrap: wrap !important;
 }
 
-/* Version info display */
-#tabbrowser-tabs::before {
-    content: var(--paxmod-version);
-    color: #555;
-    position: absolute;
-    right: 6px;
-    top: 6px;
-    display: var(--paxmod-display-version);
-}
-
 #tabbrowser-tabs .arrowscrollbox-overflow-start-indicator,
 #tabbrowser-tabs .arrowscrollbox-overflow-end-indicator {
-    /* Required for multi-row tabs */
+    /* With multi-row tabs, we don't want overflow indicators */
     display: none;
-}
-
-#tabbrowser-tabs .arrowscrollbox-scrollbox {
-    /* Align tabs with grid */
-    padding-bottom: 1px;
-    padding-right: 1px;
 }
 
 /********** Single tab **********/
@@ -180,15 +65,10 @@
     max-width: var(--paxmod-max-tab-size) !important;
     flex-grow: 1;
     align-self: flex-end;
-    padding: 0 !important;
-    height: 24px !important;
-    /* Align tabs with grid */
-    margin-left: 1px;
-    margin-top: 1px;
-    outline: 1px solid var(--paxmod-grid-color) !important;
     /* Can't completely disable transitions, otherwise tabs have small pixel
      * offsets after closing some tabs */
     transition-duration: .1ms !important;
+    min-height: var(--tab-min-height) !important;
 }
 
 /* Required to hide closing tabs */
@@ -198,96 +78,41 @@
     min-width: 0px !important;
 }
 
-.tabbrowser-tab[selected] {
-    outline: 1px solid var(--paxmod-outline-color-focus) !important;
-}
-
 .tabbrowser-tab[pinned] {
-    width: 24px !important;
-    min-width: 0 !important;
     flex-grow: 0 !important;
-}
-
-.tabbrowser-tab[pinned] .tab-icon-overlay {
-    /* Hides overlays such as mute icon for pinned tabs */
-    display: none !important;
-}
-
-.tabbrowser-tab:hover {
-    outline: 1px solid var(--paxmod-outline-color-focus) !important;
-    z-index: 2 !important;
+    width: initial !important;
+    min-width: initial !important;
 }
 
 .tabbrowser-tab:after {
-    /* Otherwise, a tab's outline doesn't overlap the grid. */
+    /* Otherwise, there's extra space between tabs */
     display: none !important;
 }
 
-.tabbrowser-tab .tab-background {
-    /* Otherwise, there is space between the top tab line and the tab border. */
-    border: none !important;
-}
-
 .tabbrowser-tab .tab-stack {
+    /* Otherwise, tabs don't occupy their full designated space */
     width: 100% !important;
     height: 100% !important;
 }
 
-.tabbrowser-tab .tab-content {
-    padding: 0 4px !important;
-}
-
-.tabbrowser-tab .tab-label-container {
-    padding-left: 4px !important;
-}
-
-.tabbrowser-tab .tab-throbber,
-.tabbrowser-tab .tab-throbber-fallback, 
-.tabbrowser-tab .tab-icon-image {
-    margin-inline-end: 0 !important;
-    height: 16px !important;
-    width: 16px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* Hide close button by default... */
-.tabbrowser-tab .tab-close-button {
-    display: var(--paxmod-display-close-button);
-    margin-top: 0 !important;
+/* Hide tab close button by default... */
+.tabbrowser-tab:not([pinned]) .tab-close-button {
+    display: var(--paxmod-display-close-button) !important;
 }
 
 /* ...and show it when hovering. */
-.tabbrowser-tab:hover .tab-close-button {
-    /* We'd want display: -moz-box, but the property isn't accepted in FF>=63,
-     * so achieve the effect with -webkit-box */
-    display: -webkit-box;
-}
-
-.tabbrowser-tab[pinned] .tab-close-button {
-    /* Otherwise, the pinned tab takes exessive space */
-    display: none;
-}
-
-/********** Bookmarks Toolbar **********/
-
-#PersonalToolbar {
-    padding: 0 !important;
-    height: 25px !important; /* That's 24px + border */
-}
-
-#PersonalToolbar toolbarbutton {
-    padding: 0 4px !important;
+.tabbrowser-tab:not([pinned]):hover .tab-close-button {
+    display: initial !important;
 }
 
 /********** Titlebar **********/
 
-#titlebar .titlebar-buttonbox-container {
+:root[tabsintitlebar] #titlebar .titlebar-buttonbox-container {
     /* Give users an option to hide the min/max/close buttions */
     display: var(--paxmod-titlebar-display);
 }
 
-#titlebar .titlebar-buttonbox {
+:root[tabsintitlebar] #titlebar .titlebar-buttonbox {
     /* Otherwise, the inline min/max/close buttons on Windows (and maybe MacOS)
      * will stretch to the full height of multiple tab rows */
     display: inline-block;

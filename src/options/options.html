@@ -7,18 +7,9 @@
   <body>
     <h1>Settings</h1>
 
-    <div class="optionButtons">
-      <button type="submit" class="saveOptionsButton">Apply</button>
-      <button type="submit" class="resetDarkOptionsButton">Restore defaults (dark)</button>
-      <button type="submit" class="resetLightOptionsButton">Restore defaults (light)</button>
-    </div>
-
     <div class="options">
       <div><label for="enableIconColors">Dynamic tab colors</label></div>
       <div><input id="enableIconColors" type="checkbox"></div>
-
-      <div><label for="displayVersion">Display version info</label></div>
-      <div><input id="displayVersion" type="checkbox"></div>
 
       <div><label for="displayNewtab">Display new tab button</label></div>
       <div><input id="displayNewtab" type="checkbox"></div>
@@ -32,25 +23,31 @@
       <div><label for="displayCloseButton">Always display tab close button</label></div>
       <div><input id="displayCloseButton" type="checkbox"></div>
 
+      <div><label for="roundedCorners">Rounded corners</label></div>
+      <div><input id="roundedCorners" type="checkbox"></div>
+
       <div><label for="fontFamily">Font family</label></div>
       <div><input id="fontFamily" type="text"></div>
 
       <div><label for="fontSize">Font size</label></div>
       <div><input id="fontSize" type="number"> px</div>
 
-      <div><label for="tabSize">Default tab size</label></div>
+      <div><label for="tabSize">Default tab width</label></div>
       <div><input id="tabSize" type="number"> %</div>
 
-      <div><label for="minTabSize">Min. tab size</label></div>
+      <div><label for="minTabSize">Min. tab width</label></div>
       <div><input id="minTabSize" type="number"> px</div>
 
-      <div><label for="maxTabSize">Max. tab size</label></div>
+      <div><label for="maxTabSize">Max. tab width</label></div>
       <div><input id="maxTabSize" type="number"> px</div>
 
-      <div><label for="minLightness">Min. tab color lightness</label></div>
+      <div><label for="minTabHeight">Min. tab height</label></div>
+      <div><input id="minTabHeight" type="number"> px</div>
+
+      <div><label for="minLightness">Min. tab color lightness <small>(best on dark theme: 59, light theme: 100)</small></label></div>
       <div><input id="minLightness" type="number" min="0" max="100"> (0-100)</div>
 
-      <div><label for="maxLightness">Max. tab color lightness</label></div>
+      <div><label for="maxLightness">Max. tab color lightness <small>(best on dark theme: 100, light theme: 52)</small></label></div>
       <div><input id="maxLightness" type="number" min="0" max="100"> (0-100)</div>
 
       <div><label for="userCSS">Path to custom CSS</label></div>
@@ -58,18 +55,6 @@
 
       <div><label for="userCSSCode">Custom CSS</label></div>
       <div><textarea id="userCSSCode"></textarea></div>
-
-      <div><label for="enableThemeColors">Custom theme colors</label></div>
-      <div><input id="enableThemeColors" type="checkbox"></div>
-    </div>
-
-    <div><h2>Colors</h2></div>
-
-    <div>
-      The theme colors below are only applied if <i>Custom theme colors</i> is checked. See <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/theme#colors">the MDN docs</a> for an explanation of each color name. (Note that there are some minor differences as described in the <a href="https://github.com/numirias/paxmod#color-settings">README</a>.)<br><br>
-    </div>
-    <div id="colors" class="options">
-      <!-- Filled by script -->
     </div>
 
     <div><h2>Import / Export</h2></div>
@@ -84,8 +69,7 @@
 
     <div class="optionButtons">
       <button type="submit" class="saveOptionsButton">Apply</button>
-      <button type="submit" class="resetDarkOptionsButton">Restore defaults (dark)</button>
-      <button type="submit" class="resetLightOptionsButton">Restore defaults (light)</button>
+      <button type="submit" class="resetOptionsButton">Restore defaults</button>
     </div>
 
     <script src="options.js"></script>

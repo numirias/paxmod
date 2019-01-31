@@ -4,17 +4,6 @@ const background = browser.extension.getBackgroundPage();
 
 function displayOptions() {
   let allCode = '';
-  for (let color of background.themeColorVars) {
-    let hint = background.themeColorHints[color] ? `<div class="hint">(${background.themeColorHints[color]})</div>` : '';
-    let code = `<div><label for="${color}"><small><code>${color}</code> ${hint}</small></label></div>
-    <div>
-      <input id="${color}" type="color">
-      Var: <input id="${color}_var" type="text" class="var">
-    </div>`;
-    allCode += code;
-  }
-  document.getElementById('colors').innerHTML = allCode;
-
   browser.storage.local.get().then(options => {
     for (let key in options) {
       let element = document.getElementById(key);
@@ -48,8 +37,8 @@ function saveOptions() {
   browser.storage.local.set(newOptions).then(background.applyOptions);
 }
 
-function resetOptions(alt = false) {
-  browser.storage.local.set(!alt ? background.defaultOptions : background.defaultOptionsLight).then(() => {
+function resetOptions() {
+  browser.storage.local.set(background.defaultOptions).then(() => {
     background.applyOptions();
     displayOptions();
   });
@@ -75,7 +64,7 @@ function importOptions(e) {
 
 function exportOptions() {
   browser.storage.local.get().then(options => {
-    let file = new Blob([JSON.stringify(options)], {type: 'application/json'});
+    let file = new Blob([JSON.stringify(options, null, 4)], {type: 'application/json'});
     let a = document.createElement('a');
     let url = URL.createObjectURL(file);
     a.href = url;
@@ -93,8 +82,7 @@ function exportOptions() {
 document.addEventListener('DOMContentLoaded', displayOptions);
 
 document.querySelectorAll('.saveOptionsButton').forEach(x => x.addEventListener('click', saveOptions));
-document.querySelectorAll('.resetDarkOptionsButton').forEach(x => x.addEventListener('click', () => resetOptions()));
-document.querySelectorAll('.resetLightOptionsButton').forEach(x => x.addEventListener('click', () => resetOptions(true)));
+document.querySelectorAll('.resetOptionsButton').forEach(x => x.addEventListener('click', () => resetOptions()));
 
 document.querySelector('#importFile').addEventListener('change', importOptions);
 document.querySelector('#exportButton').addEventListener('click', exportOptions);
