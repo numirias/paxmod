@@ -19,12 +19,11 @@ h2 {
 .options {
     display: grid;
     align-items: center;
-    grid-template-columns: 270px auto;
-    margin: 20px 0;
+    grid-template-columns: 50% auto;
 }
 
 .options div {
-    min-height: 40px;
+    margin-bottom: 15px;
 }
 
 .optionButtons {
@@ -38,7 +37,7 @@ input[type="number"] {
 
 textarea,
 input[type="text"] {
-    width: 300px;
+    width: 95%;
 }
 
 input[type="checkbox"] {
@@ -46,10 +45,5 @@ input[type="checkbox"] {
 }
 
 textarea {
-  height: 100px;
-}
-
-.var {
-    font-family: monospace;
-    width: 200px !important;
+  height: 150px;
 }
