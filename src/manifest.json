@@ -7,7 +7,8 @@
   "applications": {
     "gecko": {
       "id": "paxmod@numirias",
-      "strict_min_version": "67.0"
+      "strict_min_version": "67a0",
+      "update_url": "https://raw.githubusercontent.com/numirias/paxmod/master/updates.json"
     }
   },
   "icons": {
