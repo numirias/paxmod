@@ -16,7 +16,7 @@ Paxmod is a Firefox add-on that provides multiple tab rows and dynamic, site-dep
 
 ## Installation
 
-- Use an up-to-date version (67+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or [Nightly](https://www.mozilla.org/en-US/firefox/nightly/). *Note that FF 67 is only available via Nightly right now!*
+- Use an up-to-date version (70+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or [Nightly](https://www.mozilla.org/en-US/firefox/nightly/).
 
 - Allow unsigned extensions. (Go to `about:config` and set `xpinstall.signatures.required` to `false`. [Why?](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla))
 
