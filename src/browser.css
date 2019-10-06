@@ -1,9 +1,9 @@
 /* Only apply CSS to XUL windows */
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#nav-bar toolbaritem textbox,
-#nav-bar toolbaritem label,
-#urlbar-zoom-button,
+#nav-bar toolbaritem,
+#urlbar .urlbar-input-box,
+#urlbar #identity-box,
 .tabbrowser-tab,
 #PersonalToolbar {
     font-family: var(--paxmod-font-family) !important;
@@ -17,13 +17,6 @@
     min-height: 0 !important;
 }
 
-#tabbrowser-tabs .scrollbutton-up,
-#tabbrowser-tabs .scrollbutton-down {
-    /* Doesn't make sense to scroll through multi-row tabs since they are all
-     * visible */
-    display: none !important;
-}
-
 #alltabs-button {
     display: none !important;
 }
@@ -32,7 +25,7 @@
     display: none !important;
 }
 
-#tabbrowser-tabs .tabs-newtab-button {
+toolbarbutton#tabs-newtab-button {
     margin: 0 !important;
     display: var(--paxmod-display-newtab) !important;
     align-self: flex-end;
@@ -45,14 +38,21 @@
     display: block;
 }
 
-#tabbrowser-tabs .tabbrowser-arrowscrollbox > scrollbox {
+.tabbrowser-arrowscrollbox::part(scrollbutton-up),
+.tabbrowser-arrowscrollbox::part(scrollbutton-down) {
+    /* Doesn't make sense to scroll through multi-row tabs since they are all
+     * visible */
+    display: none !important;
+}
+
+.tabbrowser-arrowscrollbox::part(scrollbox) {
     width: 100% !important;
     display: flex !important;
     flex-wrap: wrap !important;
 }
 
-#tabbrowser-tabs .arrowscrollbox-overflow-start-indicator,
-#tabbrowser-tabs .arrowscrollbox-overflow-end-indicator {
+.tabbrowser-arrowscrollbox::part(arrowscrollbox-overflow-start-indicator),
+.tabbrowser-arrowscrollbox::part(arrowscrollbox-overflow-end-indicator) {
     /* With multi-row tabs, we don't want overflow indicators */
     display: none;
 }
@@ -64,7 +64,6 @@
     min-width: var(--paxmod-min-tab-size) !important;
     max-width: var(--paxmod-max-tab-size) !important;
     flex-grow: 1;
-    align-self: flex-end;
     /* Can't completely disable transitions, otherwise tabs have small pixel
      * offsets after closing some tabs */
     transition-duration: .1ms !important;
@@ -84,13 +83,9 @@
     min-width: initial !important;
 }
 
-.tabbrowser-tab:after {
-    /* Otherwise, there's extra space between tabs */
-    display: none !important;
-}
-
 .tabbrowser-tab .tab-stack {
     /* Otherwise, tabs don't occupy their full designated space */
+    /* TODO still required? */
     width: 100% !important;
     height: 100% !important;
 }
