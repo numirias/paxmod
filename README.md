@@ -18,9 +18,13 @@ Paxmod is a Firefox add-on that provides multiple tab rows and dynamic, site-dep
 
 - Use an up-to-date version (70+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or [Nightly](https://www.mozilla.org/en-US/firefox/nightly/).
 
-- Allow unsigned extensions. (Go to `about:config` and set `xpinstall.signatures.required` to `false`. [Why?](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla))
+- Go to `about:config` and confirm these settings:
 
-- Allow legacy extensions. (Go to `about:config` and set `extensions.legacy.enabled` to `true`. This is required to load the bundled stylesheet API.)
+  | Key | Value |
+  | --- | --- |
+  | `xpinstall.signatures.required` | `false` [(Why?)](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla) |
+  | `extensions.legacy.enabled` | `true` |
+  | `layout.css.shadow-parts.enabled` | `true` |
 
 - Install Paxmod. (Download the `.xpi` file from [here](https://github.com/numirias/paxmod/releases/latest) and load it in Firefox.)
 
@@ -53,7 +57,7 @@ To load custom CSS, you can either specify a path or paste a CSS snippet in the 
 
 ### Why can't I install Paxmod as a verified extension through Mozilla?
 
-Paxmod needs to be able to modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that ships included in the add-on. Unfortunately, this means Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
+Paxmod needs to be able to freely modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that ships bundled with the add-on. Unfortunately, this means Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
 
 ### Where did the titlebar go?
 
