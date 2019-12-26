@@ -35,7 +35,7 @@ function makeDynamicSheet(options) {
   @import url('${options.userCSS}');
   @import url('data:text/css;base64,${btoa(options.userCSSCode)}');
   @namespace url('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul');
-  :root {
+  :root, ::part(scrollbox) {
     --paxmod-font-size: ${options.fontSize}px;
     --paxmod-tab-size: ${options.tabSize}%;
     --paxmod-min-tab-size: ${options.minTabSize}px;
