@@ -105,10 +105,12 @@ Use [web-ext](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_
 
     web-ext run --firefox /usr/bin/firefox-nightly --firefox-profile dev-paxmod --source-dir src
 
-(Make sure the chosen profile has the stylesheet API installed, you're in the project's root directory, and you're pointing to an existing Firefox binary.)
+(Make sure you're in the project's root directory, and you're pointing to an existing Firefox binary.)
 
-And to build the addon, run:
+To build the addon, run:
 
-    web-ext build --overwrite-dest --source-dir src
+    make build
 
-This will produce a `.zip` file in `web-ext-artifacts/`. Rename the file to `.xpi` to have it recognized as a Firefox extension.
+To release a new version, run:
+
+    VERSION=0.0 make release
