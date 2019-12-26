@@ -1,5 +1,4 @@
 build:
-
 	web-ext build --overwrite-dest --source-dir src --artifacts-dir build
 	mv build/paxmod-$(VERSION).zip build/paxmod-${VERSION}.xpi
 
