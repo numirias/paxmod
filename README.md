@@ -23,7 +23,8 @@ Paxmod is a Firefox add-on that provides multiple tab rows and dynamic, site-dep
   | Key | Value |
   | --- | --- |
   | `xpinstall.signatures.required` | `false` [(Why?)](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla) |
-  | `extensions.legacy.enabled` | `true` |
+  | `extensions.legacy.enabled` | `true` (only in FF < 74) |
+  | `extensions.experiments.enabled` | `true` (only in FF >= 74) |
   | `layout.css.shadow-parts.enabled` | `true` |
 
 - Install Paxmod. (Download the `.xpi` file from [here](https://github.com/numirias/paxmod/releases/latest) and load it in Firefox.)
