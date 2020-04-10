@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Paxmod",
-  "version": "3.3",
+  "version": "3.4",
   "homepage_url": "https://github.com/numirias/paxmod",
   "description": "Paxmod provides multiple tab rows and site-dependent tab colors in Firefox.",
   "applications": {
