@@ -118,3 +118,37 @@ toolbarbutton#tabs-newtab-button {
     max-width: var(--paxmod-titlebar-placeholders) !important;
     border: none !important;
 }
+
+/********** Legacy **********/
+/* All following rules are kept to accommodate older versions */
+
+/* FF < 76 */
+
+#tabbrowser-tabs, .tabbrowser-arrowscrollbox {
+    /* Otherwise, a single tab row is too high */
+    min-height: 0 !important;
+}
+
+#tabbrowser-tabs .tabbrowser-arrowscrollbox {
+    /* Required, so the scrollbox always shows all tabs */
+    display: block;
+}
+
+.tabbrowser-arrowscrollbox::part(scrollbutton-up),
+.tabbrowser-arrowscrollbox::part(scrollbutton-down) {
+    /* Doesn't make sense to scroll through multi-row tabs since they are all
+     * visible */
+    display: none !important;
+}
+
+.tabbrowser-arrowscrollbox::part(scrollbox) {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.tabbrowser-arrowscrollbox::part(arrowscrollbox-overflow-start-indicator),
+.tabbrowser-arrowscrollbox::part(arrowscrollbox-overflow-end-indicator) {
+    /* With multi-row tabs, we don't want overflow indicators */
+    display: none;
+}
