@@ -26,11 +26,7 @@
     "browser_style": true
   },
   "background": {
-    "scripts": [
-      "iconcolor.js",
-      "w3color.js",
-      "background.js"
-    ]
+    "page": "background.html"
   },
   "experiment_apis": {
     "stylesheet": {

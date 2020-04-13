@@ -1,4 +1,6 @@
-/* global browser iconColor */
+/* global browser */
+import iconColor from './iconcolor.js';
+import w3color from './w3color.js';
 
 const NS_XHTML = 'http://www.w3.org/1999/xhtml';
 const globalSheet = browser.extension.getURL('browser.css');

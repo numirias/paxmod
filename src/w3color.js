@@ -1,6 +1,7 @@
 /* w3color.js ver.1.18 by w3schools.com (Do not remove this line)*/
-(function () {
-function w3color(color, elmnt) {
+/* (modified for paxmod) */
+
+export default function w3color(color, elmnt) {
   if (!(this instanceof w3color)) { return new w3color(color, elmnt); }
   if (typeof color == "object") {return color; }
   this.attachValues(toColorObject(color));
@@ -578,7 +579,7 @@ function rgbToHsl(r, g, b) {
   return {h : h, s : s, l : l};
 }
 function rgbToHwb(r, g, b) {
-  var h, w, bl;
+  var h, w, bl, max, min, chroma;
   r = r / 255;
   g = g / 255;
   b = b / 255;
@@ -599,7 +600,7 @@ function rgbToHwb(r, g, b) {
   return {h : h, w : w, b : bl};
 }
 function rgbToCmyk(r, g, b) {
-  var c, m, y, k;
+  var c, m, y, k, max;
   r = r / 255;
   g = g / 255;
   b = b / 255;
@@ -621,15 +622,11 @@ function toHex(n) {
   while (hex.length < 2) {hex = "0" + hex; }
   return hex;
 }
-function cl(x) {
-  console.log(x);
-}
 function w3trim(x) {
   return x.replace(/^\s+|\s+$/g, '');
 }
 function isHex(x) {
   return ('0123456789ABCDEFabcdef'.indexOf(x) > -1);
 }
-window.w3color = w3color;
 
-})();
+
