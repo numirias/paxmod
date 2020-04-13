@@ -3,7 +3,7 @@
   "name": "Paxmod",
   "version": "3.4",
   "homepage_url": "https://github.com/numirias/paxmod",
-  "description": "Paxmod provides multiple tab rows and site-dependent tab colors in Firefox.",
+  "description": "Multiple tab rows and site-dependent tab colors for Firefox.",
   "applications": {
     "gecko": {
       "id": "paxmod@numirias",

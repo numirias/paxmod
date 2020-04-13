@@ -4,7 +4,7 @@ import w3color from './w3color.js';
 
 const NS_XHTML = 'http://www.w3.org/1999/xhtml';
 const globalSheet = browser.extension.getURL('browser.css');
-var defaultOptions = { // eslint-disable-line no-var
+export let defaultOptions = {
   enableIconColors: true,
   displayNewtab: false,
   displayTitlebar: true,
@@ -81,14 +81,13 @@ function addIconColor(url) {
   img.src = url;
 }
 
-function addAllIconColors() {
-  browser.tabs.query({}).then(tabs => {
-    for (let tab of tabs) {
-      if (tab.favIconUrl) {
-        addIconColor(tab.favIconUrl);
-      }
+async function addAllIconColors() {
+  let tabs = await browser.tabs.query({});
+  for (let tab of tabs) {
+    if (tab.favIconUrl) {
+      addIconColor(tab.favIconUrl);
     }
-  });
+  }
 }
 
 function removeAllIconColors() {
@@ -98,37 +97,42 @@ function removeAllIconColors() {
   iconSheets = {};
 }
 
+export async function getOptions() {
+  return await browser.storage.local.get();
+}
+
+export async function setOptions(options) {
+  await browser.storage.local.set(options);
+}
+
+export async function deployOptions() {
+  let options = await getOptions();
+  removeAllIconColors();
+  cachedOptions.minLightness = options.minLightness;
+  cachedOptions.maxLightness = options.maxLightness;
+
+  let newOptionsSheet = makeDynamicSheet(options);
+  if (currentOptionsSheet) {
+    await browser.stylesheet.unload(currentOptionsSheet, 'AUTHOR_SHEET');
+  }
+  await browser.stylesheet.load(newOptionsSheet, 'AUTHOR_SHEET');
+  currentOptionsSheet = newOptionsSheet;
+  if (options.enableIconColors) {
+    if (!browser.tabs.onUpdated.hasListener(onTabUpdated)) {
+      browser.tabs.onUpdated.addListener(onTabUpdated);
+    }
+    await addAllIconColors();
+  } else {
+    if (browser.tabs.onUpdated.hasListener(onTabUpdated)) {
+      browser.tabs.onUpdated.removeListener(onTabUpdated);
+    }
+  }
+}
+
 function onTabUpdated(tabId, changeInfo) {
   if (changeInfo.favIconUrl) {
     addIconColor(changeInfo.favIconUrl);
   }
-}
-
-// Return the best tab lightness settings for a given theme
-function applyOptions() {
-  browser.storage.local.get().then(options => {
-    removeAllIconColors();
-    cachedOptions.minLightness = options.minLightness;
-    cachedOptions.maxLightness = options.maxLightness;
-
-    let sheet = makeDynamicSheet(options);
-    if (currentOptionsSheet) {
-      browser.stylesheet.unload(currentOptionsSheet, 'AUTHOR_SHEET');
-    }
-    browser.stylesheet.load(sheet, 'AUTHOR_SHEET').then(() => {
-      currentOptionsSheet = sheet;
-      if (options.enableIconColors) {
-        if (!browser.tabs.onUpdated.hasListener(onTabUpdated)) {
-          browser.tabs.onUpdated.addListener(onTabUpdated);
-        }
-        addAllIconColors();
-      } else {
-        if (browser.tabs.onUpdated.hasListener(onTabUpdated)) {
-          browser.tabs.onUpdated.removeListener(onTabUpdated);
-        }
-      }
-    });
-  });
 }
 
 // Return the best tab lightness settings for a given theme
@@ -167,7 +171,7 @@ function getBestLightnessOptions(theme) {
 
 async function startup() {
   browser.stylesheet.load(globalSheet, 'AUTHOR_SHEET');
-  let options = await browser.storage.local.get();
+  let options = await getOptions();
   let theme = await browser.theme.getCurrent();
   let newOptions = {};
   for (let key in defaultOptions) {
@@ -178,7 +182,9 @@ async function startup() {
   if (options.fitLightness !== false) {
     Object.assign(newOptions, getBestLightnessOptions(theme));
   }
-  browser.storage.local.set(newOptions).then(applyOptions);
+  if (Object.keys(newOptions).length > 0) {
+    setOptions(newOptions).then(deployOptions);
+  }
 }
 
 browser.runtime.onInstalled.addListener(details => {
@@ -189,7 +195,7 @@ browser.runtime.onInstalled.addListener(details => {
 
 browser.theme.onUpdated.addListener(async details => {
   if (await browser.storage.local.get('fitLightness').fitLightness !== false) {
-    browser.storage.local.set(getBestLightnessOptions(details.theme)).then(applyOptions);
+    setOptions(getBestLightnessOptions(details.theme)).then(deployOptions);
   }
 });
 
