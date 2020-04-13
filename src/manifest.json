@@ -18,7 +18,8 @@
     "<all_urls>",
     "management",
     "storage",
-    "tabs"
+    "tabs",
+    "theme"
   ],
   "options_ui": {
     "page": "options/options.html",
@@ -27,6 +28,7 @@
   "background": {
     "scripts": [
       "iconcolor.js",
+      "w3color.js",
       "background.js"
     ]
   },

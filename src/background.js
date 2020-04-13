@@ -17,6 +17,7 @@ var defaultOptions = { // eslint-disable-line no-var
   minTabHeight: 28,
   minLightness: 59,
   maxLightness: 100,
+  fitLightness: true,
   userCSS: '',
   userCSSCode: '',
 };
@@ -101,6 +102,7 @@ function onTabUpdated(tabId, changeInfo) {
   }
 }
 
+// Return the best tab lightness settings for a given theme
 function applyOptions() {
   browser.storage.local.get().then(options => {
     removeAllIconColors();
@@ -127,22 +129,65 @@ function applyOptions() {
   });
 }
 
-function startup() {
-  browser.stylesheet.load(globalSheet, 'AUTHOR_SHEET');
-  browser.storage.local.get().then(options => {
-    let promises = [];
-    for (let key in defaultOptions) {
-      if (!(key in options)) {
-        promises.push(browser.storage.local.set({[key]: defaultOptions[key]}));
-      }
+// Return the best tab lightness settings for a given theme
+function getBestLightnessOptions(theme) {
+  // Maps theme color properties to whether their lightness corresponds to the
+  // inverted theme lightness, ordered by significance
+  let invertColorMap = {
+    tab_text: true,
+    textcolor: true,
+    tab_selected: false,
+    frame: false,
+    accentcolor: false,
+    bookmark_text: true,
+    toolbar_text: true,
+  };
+  let light = {
+    minLightness: 0,
+    maxLightness: 52,
+  };
+  let dark = {
+      minLightness: 59,
+      maxLightness: 100,
+  };
+  let colors = theme.colors;
+  if (!colors) {
+    return light;
+  }
+  for (let prop in invertColorMap) {
+    if (!colors[prop]) {
+      continue;
     }
-    Promise.all(promises).then(applyOptions);
-  });
+    return (w3color(colors[prop]).isDark() !== invertColorMap[prop]) ? dark : light;
+  }
+  return light;
+}
+
+async function startup() {
+  browser.stylesheet.load(globalSheet, 'AUTHOR_SHEET');
+  let options = await browser.storage.local.get();
+  let theme = await browser.theme.getCurrent();
+  let newOptions = {};
+  for (let key in defaultOptions) {
+    if (!(key in options)) {
+      newOptions[key] = defaultOptions[key];
+    }
+  }
+  if (options.fitLightness !== false) {
+    Object.assign(newOptions, getBestLightnessOptions(theme));
+  }
+  browser.storage.local.set(newOptions).then(applyOptions);
 }
 
 browser.runtime.onInstalled.addListener(details => {
   if (details.reason === 'install') {
     browser.tabs.create({url: browser.runtime.getManifest().homepage_url});
+  }
+});
+
+browser.theme.onUpdated.addListener(async details => {
+  if (await browser.storage.local.get('fitLightness').fitLightness !== false) {
+    browser.storage.local.set(getBestLightnessOptions(details.theme)).then(applyOptions);
   }
 });
 
