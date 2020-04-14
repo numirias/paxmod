@@ -10,7 +10,6 @@ export let defaultOptions = {
   displayTitlebar: true,
   displayPlaceholders: false,
   displayCloseButton: false,
-  roundedCorners: true,
   fontFamily: 'inherit',
   fontSize: 14,
   tabSize: 10,
@@ -49,7 +48,6 @@ function makeDynamicSheet(options) {
     --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
     --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
     --paxmod-display-close-button: ${options.displayCloseButton ? '-webkit-box' : 'none'};
-    ${options.roundedCorners ? '' : '--toolbarbutton-border-radius: 0;'}
   }`;
   // -webkit-box is used as a replacement for -moz-box which doesn't seem to
   // work in FF >= 63. That's possibly an internal bug.
