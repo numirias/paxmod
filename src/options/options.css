@@ -3,16 +3,16 @@ body {
 }
 
 label {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: normal;
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: normal;
 }
 
@@ -23,7 +23,7 @@ h2 {
 }
 
 .options div {
-    margin-bottom: 15px;
+    margin: 7px 0;
 }
 
 .optionButtons {
@@ -37,7 +37,7 @@ input[type="number"] {
 
 textarea,
 input[type="text"] {
-    width: 95%;
+    width: 100%;
 }
 
 input[type="checkbox"] {
@@ -46,4 +46,13 @@ input[type="checkbox"] {
 
 textarea {
   height: 150px;
+}
+
+small {
+  display: block;
+}
+
+.info {
+  margin-top: .5rem;
+  margin-bottom: 1rem;
 }

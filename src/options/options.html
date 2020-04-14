@@ -7,14 +7,18 @@
   <body>
     <h1>Settings</h1>
 
+    <div class="info">
+      Problems? Check the add-on homepage (<a href="https://github.com/numirias/paxmod/">https://github.com/numirias/paxmod</a>).
+    </div>
+
     <div class="options">
       <div><label for="enableIconColors">Dynamic tab colors</label></div>
       <div><input id="enableIconColors" type="checkbox"></div>
 
-      <div><label for="displayNewtab">Display new tab button</label></div>
+      <div><label for="displayNewtab">Display "New Tab" button</label></div>
       <div><input id="displayNewtab" type="checkbox"></div>
 
-      <div><label for="displayTitlebar">Display titlebar buttons</label></div>
+      <div><label for="displayTitlebar">Display titlebar buttons <small>(close, minimize, ...)</small></label></div>
       <div><input id="displayTitlebar" type="checkbox"></div>
 
       <div><label for="displayPlaceholders">Display titlebar spacers</label></div>
@@ -41,14 +45,14 @@
       <div><label for="minTabHeight">Min. tab height</label></div>
       <div><input id="minTabHeight" type="number"> px</div>
 
-      <div><label for="minLightness">Min. tab color lightness <small>(best on dark theme: 59, light theme: 0)</small></label></div>
-      <div><input id="minLightness" type="number" min="0" max="100"> (0-100)</div>
-
-      <div><label for="maxLightness">Max. tab color lightness <small>(best on dark theme: 100, light theme: 52)</small></label></div>
-      <div><input id="maxLightness" type="number" min="0" max="100"> (0-100)</div>
-
       <div><label for="fitLightness">Fit lightness to themes</label></div>
       <div><input id="fitLightness" type="checkbox"></div>
+
+      <div><label for="minLightness">Min. tab color lightness <small>best on dark theme: 59, light theme: 0</small></label></div>
+      <div><input id="minLightness" type="number" min="0" max="100"> (0-100)</div>
+
+      <div><label for="maxLightness">Max. tab color lightness <small>best on dark theme: 100, light theme: 52</small></label></div>
+      <div><input id="maxLightness" type="number" min="0" max="100"> (0-100)</div>
 
       <div><label for="userCSS">Path to custom CSS</label></div>
       <div><input id="userCSS" type="text" placeholder="e.g. file:///home/john/custom.css"></div>
