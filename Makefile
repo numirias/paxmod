@@ -17,6 +17,7 @@ build:
 	web-ext build --overwrite-dest \
 	    --source-dir src --artifacts-dir build --ignore-files "*.template"
 	mv build/paxmod-$(ver_cur).zip build/paxmod-${ver_cur}.xpi
+	ln -sf paxmod-${ver_cur}.xpi build/paxmod-latest.xpi
 
 release: version build
 	git commit -m "Release v$(ver_new)" src/manifest.json updates.json
@@ -24,6 +25,10 @@ release: version build
 	git push --tags
 	hub release create v$(ver_new) -a build/paxmod-$(ver_new).xpi -m v$(ver_new)
 	git push
+
+demo:
+	DARK=1 FF_BINARY=firefox-developer-edition ./scripts/demo.sh
+	FF_BINARY=firefox-nightly ./scripts/demo.sh
 
 clean:
 	rm -rf build/

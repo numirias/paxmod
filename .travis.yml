@@ -1,0 +1,21 @@
+dist: xenial
+language: node_js
+node_js:
+  - "13.13"
+matrix:
+  include:
+    - os: linux
+      addons:
+        firefox: "latest-nightly"
+    - os: linux
+      addons:
+        firefox: "latest-dev"
+before_install:
+  - wget -q https://xpra.org/gpg.asc -O- | sudo apt-key add -
+  - sudo add-apt-repository -y "deb https://xpra.org/ xenial main"
+  - sudo apt-get update
+  - sudo apt-get install -y moreutils jq xpra xdotool ffmpeg
+  - npm install -g web-ext
+script:
+  - make build
+  - make demo
