@@ -1,8 +1,11 @@
 .PHONY: build
 
+VERSION = $(shell jq -r ".version" src/manifest.json)
+
 build:
 	web-ext build --overwrite-dest --source-dir src --artifacts-dir build
-	mv build/paxmod-$(VERSION).zip build/paxmod-${VERSION}.xpi
+	mv build/paxmod-$(VERSION).zip build/paxmod-$(VERSION).xpi
+	ln -fs paxmod-$(VERSION).xpi build/paxmod-latest.xpi
 
 release:
 	[[ -n "$(VERSION)" ]] || (echo "Release version required (\$$VERSION)"; exit 1)
@@ -15,5 +18,9 @@ release:
 	hub release create v$(VERSION) -a build/paxmod-$(VERSION).xpi -m v$(VERSION)
 	git push
 
+demo:
+	./scripts/demo.sh
+
 clean:
 	rm -rf build/
+
