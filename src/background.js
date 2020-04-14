@@ -192,7 +192,7 @@ browser.runtime.onInstalled.addListener(details => {
 });
 
 browser.theme.onUpdated.addListener(async details => {
-  if (await browser.storage.local.get('fitLightness').fitLightness !== false) {
+  if ((await browser.storage.local.get('fitLightness')).fitLightness !== false) {
     setOptions(getBestLightnessOptions(details.theme)).then(deployOptions);
   }
 });
