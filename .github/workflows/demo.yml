@@ -1,0 +1,58 @@
+name: demo
+
+on:
+  check_suite:
+    types: [completed]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@0.9.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const https = require("https")
+
+            async function get_image_url(job_id) {
+              return new Promise((resolve, reject) => {
+                https.get(`https://api.travis-ci.com/v3/job/${job_id}/log.txt`, res => {
+                  res.setEncoding("utf8")
+                  var body = ''
+                  res.on("data", chunk => {
+                    body += chunk
+                  }).on("end", () => {
+                    let link = body.match(/(?<=^DEMOURL=).*/gm)[0]
+                    resolve(link)
+                  })
+                }).on("error", () => { reject() })
+              })
+            }
+
+            const runs = await github.request(context.payload.check_suite.check_runs_url, {
+              mediaType: {
+                previews: ["antilope"]
+              }
+            })
+            for (let run of runs) {
+              let summary = run.output.summary
+              let job_ids = [...new Set([...summary.matchAll(/(?<=jobs\/)\d+/g)].map(Number))]
+              let urls = await Promise.all(job_ids.map(get_image_url))
+              console.log("urls:", urls)
+              github.checks.create({
+                mediaType: {
+                  previews: ["antilope"]
+                },
+                name: 'demo',
+                conclusion: urls ? 'success' : 'failure',
+                head_sha: context.payload.check_suite.head_sha,
+                output: {
+                  title: 'Demo GIF',
+                  text: urls.toString(),
+                  images: urls.map(url => ({
+                    alt: 'Demo',
+                    image_url: url
+                  }))
+                }
+              })
+            }
