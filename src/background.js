@@ -16,6 +16,7 @@ export let defaultOptions = {
   minTabSize: 150,
   maxTabSize: 300,
   minTabHeight: 28,
+  maxTabRows: 99,
   minLightness: 59,
   maxLightness: 100,
   fitLightness: true,
@@ -43,6 +44,7 @@ function makeDynamicSheet(options) {
     --paxmod-min-tab-size: ${options.minTabSize}px;
     --paxmod-max-tab-size: ${options.maxTabSize}px;
     --tab-min-height: ${options.minTabHeight}px !important;
+    --paxmod-max-tab-rows: ${options.maxTabRows} !important;
     --paxmod-font-family: ${options.fontFamily};
     --paxmod-display-newtab: ${options.displayNewtab ? '-webkit-box' : 'none'};
     --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};

@@ -49,6 +49,10 @@ toolbarbutton#tabs-newtab-button {
     width: 100% !important;
     display: flex !important;
     flex-wrap: wrap !important;
+    max-height: calc(var(--tab-min-height) * var(--paxmod-max-tab-rows)) !important;
+    overflow-y: auto !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--toolbarbutton-active-background) transparent;
 }
 
 #tabbrowser-arrowscrollbox::part(arrowscrollbox-overflow-start-indicator),
