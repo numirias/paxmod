@@ -1,0 +1,16 @@
+{
+  "name": "remotelogins",
+  "webExt": {
+    "verbose": true,
+    "sourceDir": "src",
+    "build": {
+      "overwriteDest": true
+    },
+    "run": {
+      "pref": [
+        "extensions.experiments.enabled=true",
+        "browser.ctrlTab.recentlyUsedOrder=false"
+      ]
+    }
+  }
+}

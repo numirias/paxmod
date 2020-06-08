@@ -36,6 +36,14 @@
         "paths": [["stylesheet"]],
         "script": "stylesheet-api-experiment/api.js"
       }
+    },
+    "paxmod": {
+      "schema": "paxmod-api-experiment/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["paxmod"]],
+        "script": "paxmod-api-experiment/api.js"
+      }
     }
   }
 }

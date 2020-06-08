@@ -81,10 +81,12 @@ toolbarbutton#tabs-newtab-button {
     min-width: 0px !important;
 }
 
-.tabbrowser-tab[pinned] {
+/* Need specific selector here to overrule !important from browser style */
+#titlebar #tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab[pinned] {
     flex-grow: 0 !important;
     width: initial !important;
     min-width: initial !important;
+    position: initial !important;
 }
 
 .tabbrowser-tab .tab-stack {

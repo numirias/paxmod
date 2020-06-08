@@ -171,6 +171,7 @@ function getBestLightnessOptions(theme) {
 
 async function startup() {
   browser.stylesheet.load(globalSheet, 'AUTHOR_SHEET');
+  browser.paxmod.load();
   let options = await getOptions();
   let theme = await browser.theme.getCurrent();
   let newOptions = {};
