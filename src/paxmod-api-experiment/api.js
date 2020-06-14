@@ -1,7 +1,6 @@
 'use strict'
 
 var wm = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator)
-var tabsProto = null
 
 var listener = {
   onOpenWindow(xulWin) {
@@ -31,33 +30,81 @@ function unload() {
 
 function patch(win) {
   try {
-    tabsProto = win.customElements.get('tabbrowser-tabs').prototype
+    var tabsProto = win.customElements.get('tabbrowser-tabs').prototype
   } catch(e) {
-    console.warn('Paxmod: didn\'t find tab box in this win')
+    console.warn('Paxmod: tab box not found in this win')
     return
   }
   if (tabsProto._positionPinnedTabs_orig) {
     console.warn('Paxmod: tab box already patched in this win')
     return
   }
-  tabsProto._positionPinnedTabs_orig = tabsProto._positionPinnedTabs
-  tabsProto._positionPinnedTabs = function() {
+  function dropIndex(tabs, event) {
+    for (let tab of tabs) {
+      let rect = tab.getBoundingClientRect()
+      if (event.screenY >= tab.screenY &&
+          event.screenY < (tab.screenY + rect.height) &&
+          event.screenX < (tab.screenX + (rect.width / 2))) {
+        // First tab right of the cursor, and in the cursor's row
+        return tabs.indexOf(tab)
+      }
+      if (event.screenY <= tab.screenY) {
+        // Entered a new tab row
+        return tabs.indexOf(tab)
+      }
+    }
+  }
+  function patchMethod(name, f) {
+    tabsProto[name + '_orig'] = tabsProto[name]
+    tabsProto[name] = f
+  }
+  patchMethod('_positionPinnedTabs', function() {
     this._positionPinnedTabs_orig()
+    // Remove visual offset of pinned tabs
     this.style.paddingInlineStart = ''
     for (let tab of this.allTabs) {
       tab.style.marginInlineStart = ''
     }
-  }
+  })
+  patchMethod('on_drop', function(event) {
+    let dt = event.dataTransfer
+    if (dt.dropEffect !== 'move') {
+      return this.on_drop_orig(event)
+    }
+    let draggedTab = dt.mozGetDataAt('application/x-moz-tabbrowser-tab', 0)
+    draggedTab._dragData.animDropIndex = dropIndex(this.allTabs, event)
+    return this.on_drop_orig(event)
+  })
+  patchMethod('on_dragover', function(event) {
+    let dt = event.dataTransfer
+    if (dt.dropEffect !== 'move') {
+      return this.on_dragover_orig(event)
+    }
+    let draggedTab = dt.mozGetDataAt('application/x-moz-tabbrowser-tab', 0)
+    let movingTabs = draggedTab._dragData.movingTabs
+    draggedTab._dragData.animDropIndex = dropIndex(this.allTabs, event)
+    this.on_dragover_orig(event)
+    // Reset rules that visualize dragging because they don't work in multi-row
+    for (let tab of this.allTabs) {
+      tab.style.transform = ''
+    }
+  })
   win.document.querySelector('#tabbrowser-tabs')._positionPinnedTabs()
 }
 
 function unpatch(win) {
+  var tabsProto = win.customElements.get('tabbrowser-tabs').prototype
   if (!tabsProto._positionPinnedTabs_orig) {
     console.warn('Paxmod: tab box not patched')
     return
   }
-  tabsProto._positionPinnedTabs = tabsProto._positionPinnedTabs_orig
-  delete tabsProto._positionPinnedTabs_orig
+  function unpatchMethod(name) {
+    tabsProto[name] = tabsProto[name + '_orig']
+    delete tabsProto[name + '_orig']
+  }
+  unpatchMethod('_positionPinnedTabs')
+  unpatchMethod('on_drop')
+  unpatchMethod('on_dragover')
 }
 
 this.paxmod = class extends ExtensionAPI {
