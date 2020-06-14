@@ -3,11 +3,11 @@
 
 Paxmod is a Firefox add-on that provides multiple tab rows and dynamic, site-dependent tab colors. You can customize the font, tab sizes, add your own CSS, and more.
 
-### Dark Demo (Firefox Nightly)
+### Dark Demo (Firefox Developer)
 
 ![Demo dark](https://i.imgur.com/V5ZC4ma.gif)
 
-### Light Demo (Firefox Developer)
+### Light Demo (Firefox Nightly)
 
 ![Demo light](https://i.imgur.com/1TodZiN.png)
 
