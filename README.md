@@ -9,7 +9,7 @@ Paxmod is a Firefox add-on that provides multiple tab rows and dynamic, site-dep
 
 ### Light Demo (Firefox Developer)
 
-![Demo light](https://i.imgur.com/GyzIhaR.gif)
+![Demo light](https://i.imgur.com/1TodZiN.png)
 
 
 ## Installation
