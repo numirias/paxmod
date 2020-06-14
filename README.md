@@ -3,20 +3,18 @@
 
 Paxmod is a Firefox add-on that provides multiple tab rows and dynamic, site-dependent tab colors. You can customize the font, tab sizes, add your own CSS, and more.
 
-### Light default
+### Dark Demo (Firefox Nightly)
 
-![Demo light](https://i.imgur.com/p0lOtuV.png)
+![Demo dark](https://i.imgur.com/V5ZC4ma.gif)
 
-### Dark default
+### Light Demo (Firefox Developer)
 
-![Demo dark](https://i.imgur.com/t3JdTp1.gif)
-
-(These demos are from an older Paxmod release, but the idea is the same.)
+![Demo light](https://i.imgur.com/GyzIhaR.gif)
 
 
 ## Installation
 
-- Use an up-to-date version (70+) of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or [Nightly](https://www.mozilla.org/en-US/firefox/nightly/).
+- Use an up-to-date version of either [Firefox Developer](https://www.mozilla.org/en-US/firefox/developer/) or [Nightly](https://www.mozilla.org/en-US/firefox/nightly/).
 
 - Go to `about:config` and confirm these settings:
 
@@ -25,7 +23,7 @@ Paxmod is a Firefox add-on that provides multiple tab rows and dynamic, site-dep
   | `xpinstall.signatures.required` | `false` [(Why?)](#why-cant-i-install-paxmod-as-a-verified-extension-through-mozilla) |
   | `extensions.legacy.enabled` | `true` (only in FF < 74) |
   | `extensions.experiments.enabled` | `true` (only in FF >= 74) |
-  | `layout.css.shadow-parts.enabled` | `true` |
+  | `layout.css.shadow-parts.enabled` | `true` (should be default) |
 
 - Install Paxmod. (Download the `.xpi` file from [here](https://github.com/numirias/paxmod/releases/latest) and load it in Firefox.)
 
@@ -36,17 +34,9 @@ You can change the font, tab sizes and other settings at `about:addons` > *Exten
 
 ### Tips
 
-- Disable UI animations for less jiggly tab movement. (Go to `about:config` and set `toolkit.cosmeticAnimations.enabled` to `false`.)
-
 - If the inline titlebar causes glitches or you think it's wasting too much space, [enable the standard titlebar](#the-inline-titlebar-causes-glitches).
 
-- Clean up and condense the UI. Open the burger menu (☰), click *Customize* and set *Density* to *Compact*. Also drag away unneeded toolbar items (in particular, remove the invisible placeholders around the urlbar).
-
-- If you want Paxmod to look exactly the same as in the dark demo, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry. But you can set any font you like.
-
-### Color settings
-
-Paxmod no longer provides custom color settings (because these are hard to maintain across Firefox releases). But you can choose from many [themes on MDN](https://addons.mozilla.org/en-US/firefox/themes/) or simply [build your own theme](https://color.firefox.com/).
+- If you want Paxmod to look exactly the same as in the dark demo, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry.
 
 
 ### Custom CSS
@@ -66,7 +56,7 @@ The inline titlebar is hidden by default, but you can re-enable it in the settin
 
 ### How are tab colors calculated?
 
-Each tab color is generated dynamically from the favicon. A dominant color is extracted from the image and eventually adjusted to an appropriate lightness in the [Lab color space](https://en.wikipedia.org/wiki/Lab_color_space). This works reasonably well and ensures that all tab labels are legible.
+Each tab color is generated dynamically from the favicon. A dominant color is extracted from the image and adjusted to an appropriate lightness per the [Lab color space](https://en.wikipedia.org/wiki/Lab_color_space). This ensures that all tab labels are legible. (You can also set lightness thresholds in the settings.)
 
 ## Troubleshooting
 
@@ -80,11 +70,7 @@ Especially on MacOS, the inline titlebar may not work as expected. In that case 
 
 ### The layout looks off.
 
-Paxmod is mainly tested on Linux, so there are most likely some quirks on MacOS or Windows that I'm not aware of. If in doubt, please [file an issue](https://github.com/numirias/paxmod/issues/new). Any help with making Paxmod compatible with other OSes is more than welcome.
-
-### Dragging tabs around isn't smooth.
-
-Tab dragging doesn't work to well with multi-row tabs and I couldn't find a CSS-only fix. Instead, you may want to use the shortcuts <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>PgUp</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>PgDn</kbd> to re-arrange the tabs.
+Paxmod is mainly tested on Linux, so there are most likely some quirks on MacOS or Windows that I'm not aware of. If in doubt, please [file an issue](https://github.com/numirias/paxmod/issues/new). Your help is welcome.
 
 ### How can I get that bitmap font?
 
@@ -104,7 +90,7 @@ If Firefox still doesn't find the font, check whether it's installed under a dif
 
 Use [web-ext](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_started_with_web-ext) to develop locally. After cloning the repository, you can run Paxmod similar to this:
 
-    web-ext run --firefox /usr/bin/firefox-nightly --firefox-profile dev-paxmod --source-dir src
+    web-ext run --firefox /usr/bin/firefox-nightly --firefox-profile dev-paxmod
 
 (Make sure you're in the project's root directory, and you're pointing to an existing Firefox binary.)
 
