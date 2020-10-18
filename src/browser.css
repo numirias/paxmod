@@ -33,9 +33,10 @@ toolbarbutton#tabs-newtab-button {
     visibility: visible !important;
 }
 
-#tabbrowser-tabs #tabbrowser-arrowscrollbox {
+#tabbrowser-tabs #tabbrowser-arrowscrollbox,
+#tabbrowser-arrowscrollbox::part(scrollbox-clip) {
     /* Required, so the scrollbox always shows all tabs */
-    display: block;
+    display: block !important;
 }
 
 #tabbrowser-arrowscrollbox::part(scrollbutton-up),
@@ -58,7 +59,7 @@ toolbarbutton#tabs-newtab-button {
 #tabbrowser-arrowscrollbox::part(arrowscrollbox-overflow-start-indicator),
 #tabbrowser-arrowscrollbox::part(arrowscrollbox-overflow-end-indicator) {
     /* With multi-row tabs, we don't want overflow indicators */
-    display: none;
+    display: none !important;
 }
 
 /********** Single tab **********/
