@@ -27,11 +27,8 @@
       <div><label for="displayCloseButton">Always display tab close button</label></div>
       <div><input id="displayCloseButton" type="checkbox"></div>
 
-      <div><label for="fontFamily">Font family</label></div>
-      <div><input id="fontFamily" type="text"></div>
-
-      <div><label for="fontSize">Font size</label></div>
-      <div><input id="fontSize" type="number"> px</div>
+      <div><label for="font">Tab label font <small>(see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font">here</a> for examples)</small></label></div>
+      <div><input id="font" type="text" placeholder="e.g. 12px &quot;Open Sans&quot;"></div>
 
       <div><label for="tabSize">Default tab width</label></div>
       <div><input id="tabSize" type="number"> %</div>
@@ -51,10 +48,10 @@
       <div><label for="fitLightness">Fit lightness to themes</label></div>
       <div><input id="fitLightness" type="checkbox"></div>
 
-      <div><label for="minLightness">Min. tab color lightness <small>best on dark theme: 59, light theme: 0</small></label></div>
+      <div><label for="minLightness">Min. tab color lightness <small>(best on dark theme: 59, light theme: 0)</small></label></div>
       <div><input id="minLightness" type="number" min="0" max="100"> (0-100)</div>
 
-      <div><label for="maxLightness">Max. tab color lightness <small>best on dark theme: 100, light theme: 52</small></label></div>
+      <div><label for="maxLightness">Max. tab color lightness <small>(best on dark theme: 100, light theme: 52)</small></label></div>
       <div><input id="maxLightness" type="number" min="0" max="100"> (0-100)</div>
 
       <div><label for="userCSS">Path to custom CSS</label></div>

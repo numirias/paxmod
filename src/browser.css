@@ -6,8 +6,7 @@
 #urlbar #identity-box,
 .tabbrowser-tab,
 #PersonalToolbar {
-    font-family: var(--paxmod-font-family) !important;
-    font-size: var(--paxmod-font-size) !important;
+    font: var(--paxmod-font) !important;
 }
 
 /********** Tabs **********/

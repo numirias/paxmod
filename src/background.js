@@ -10,8 +10,7 @@ export let defaultOptions = {
   displayTitlebar: true,
   displayPlaceholders: false,
   displayCloseButton: false,
-  fontFamily: 'inherit',
-  fontSize: 14,
+  font: '',
   tabSize: 10,
   minTabSize: 150,
   maxTabSize: 300,
@@ -39,13 +38,12 @@ function makeDynamicSheet(options) {
   @import url('data:text/css;base64,${btoa(options.userCSSCode)}');
   @namespace url('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul');
   :root, ::part(scrollbox) {
-    --paxmod-font-size: ${options.fontSize}px;
+    --paxmod-font: ${options.font};
     --paxmod-tab-size: ${options.tabSize}%;
     --paxmod-min-tab-size: ${options.minTabSize}px;
     --paxmod-max-tab-size: ${options.maxTabSize}px;
     --tab-min-height: ${options.minTabHeight}px !important;
     --paxmod-max-tab-rows: ${options.maxTabRows} !important;
-    --paxmod-font-family: ${options.fontFamily};
     --paxmod-display-newtab: ${options.displayNewtab ? '-webkit-box' : 'none'};
     --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
     --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};

@@ -23,14 +23,6 @@ function saveOptions() {
     let value = element.type === 'checkbox' ? element.checked : element.value;
     newOptions[key] = value;
   }
-  if (!/^([a-zA-Z0-9.,-_+=()\s]+)$/.test(newOptions.fontFamily)) {
-    window.alert('Font family must match: /^([a-zA-Z0-9.,-_+=()\\s]+)$/');
-    return;
-  }
-  if (!/^\d+$/.test(newOptions.fontSize)) {
-    window.alert('Font size must be a number!');
-    return;
-  }
   setOptions(newOptions)
     .then(deployOptions);
 }
