@@ -1,14 +1,6 @@
 /* Only apply CSS to XUL windows */
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#nav-bar toolbaritem,
-#urlbar .urlbar-input-box,
-#urlbar #identity-box,
-.tabbrowser-tab,
-#PersonalToolbar {
-    font: var(--paxmod-font) !important;
-}
-
 /********** Tabs **********/
 
 #tabbrowser-tabs, #tabbrowser-arrowscrollbox {
@@ -64,6 +56,7 @@ toolbarbutton#tabs-newtab-button {
 /********** Single tab **********/
 
 .tabbrowser-tab {
+    font: var(--paxmod-font) !important;
     width: var(--paxmod-tab-size) !important;
     min-width: var(--paxmod-min-tab-size) !important;
     max-width: var(--paxmod-max-tab-size) !important;
