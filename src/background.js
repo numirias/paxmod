@@ -103,8 +103,12 @@ export async function setOptions(options) {
   await browser.storage.local.set(options);
 }
 
-export async function deployOptions() {
+export async function applyOptions() {
   let options = await getOptions();
+  let theme = await browser.theme.getCurrent();
+  if (options.fitLightness !== false) {
+    Object.assign(options, getBestLightnessOptions(theme));
+  }
   removeAllIconColors();
   cachedOptions.minLightness = options.minLightness;
   cachedOptions.maxLightness = options.maxLightness;
@@ -134,7 +138,7 @@ function onTabUpdated(tabId, changeInfo) {
 }
 
 // Return the best tab lightness settings for a given theme
-function getBestLightnessOptions(theme) {
+export function getBestLightnessOptions(theme) {
   // Maps theme color properties to whether their lightness corresponds to the
   // inverted theme lightness, ordered by significance
   let invertColorMap = {
@@ -171,19 +175,16 @@ async function startup() {
   browser.stylesheet.load(globalSheet, 'AUTHOR_SHEET');
   browser.paxmod.load();
   let options = await getOptions();
-  let theme = await browser.theme.getCurrent();
   let newOptions = {};
   for (let key in defaultOptions) {
     if (!(key in options)) {
       newOptions[key] = defaultOptions[key];
     }
   }
-  if (options.fitLightness !== false) {
-    Object.assign(newOptions, getBestLightnessOptions(theme));
-  }
   if (Object.keys(newOptions).length > 0) {
-    setOptions(newOptions).then(deployOptions);
+    await setOptions(newOptions);
   }
+  applyOptions();
 }
 
 browser.runtime.onInstalled.addListener(details => {
@@ -194,7 +195,8 @@ browser.runtime.onInstalled.addListener(details => {
 
 browser.theme.onUpdated.addListener(async details => {
   if ((await browser.storage.local.get('fitLightness')).fitLightness !== false) {
-    setOptions(getBestLightnessOptions(details.theme)).then(deployOptions);
+    // Re-apply options, so the lightness settings fit the new theme
+    applyOptions();
   }
 });
 

@@ -1,5 +1,5 @@
 /* global browser */
-import { getOptions, setOptions, deployOptions, defaultOptions } from '../background.js'
+import { getOptions, setOptions, applyOptions, defaultOptions } from '../background.js'
 
 async function showOptions() {
   let options = await getOptions();
@@ -24,12 +24,12 @@ function saveOptions() {
     newOptions[key] = value;
   }
   setOptions(newOptions)
-    .then(deployOptions);
+    .then(applyOptions);
 }
 
 function resetOptions() {
   setOptions(defaultOptions)
-    .then(deployOptions)
+    .then(applyOptions)
     .then(showOptions);
 }
 
@@ -44,7 +44,7 @@ function importOptions(e) {
       return;
     }
     setOptions(newOptions)
-      .then(deployOptions)
+      .then(applyOptions)
       .then(showOptions);
   });
   reader.readAsText(e.target.files[0]);
