@@ -1,5 +1,5 @@
 {
-  "name": "remotelogins",
+  "name": "paxmod",
   "webExt": {
     "verbose": true,
     "sourceDir": "src",
