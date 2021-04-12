@@ -15,7 +15,6 @@
     "128": "img/icon.png"
   },
   "permissions": [
-    "<all_urls>",
     "management",
     "storage",
     "tabs",
