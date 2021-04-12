@@ -70,8 +70,7 @@ function addIconColor(url) {
     );
     // We can't access the Chrome DOM, so we apply each favicon color as a
     // stylesheet.
-    let sheetText = `data:text/css,.tabbrowser-tab .tab-icon-image[src='${url}']
-      ~ .tab-label-container .tab-label { color: ${color} !important; }`;
+    let sheetText = `data:text/css,.tabbrowser-tab[image='${url}'] .tab-label { color: ${color} !important; }`;
     browser.stylesheet.load(sheetText, 'AUTHOR_SHEET');
     iconSheets[url] = sheetText;
     img.remove();
