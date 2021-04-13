@@ -10,11 +10,12 @@ export let defaultOptions = {
   displayTitlebar: true,
   displayPlaceholders: false,
   displayCloseButton: false,
+  forceCompact: true,
   font: '',
   tabSize: 10,
   minTabSize: 150,
   maxTabSize: 300,
-  minTabHeight: 28,
+  minTabHeight: 29,
   maxTabRows: 99,
   minLightness: 59,
   maxLightness: 100,
@@ -34,21 +35,28 @@ function makeDynamicSheet(options) {
   // User options are applied via a dynamic stylesheet. Doesn't look elegant
   // but keeps the API small.
   let rules = `
-  @import url('${options.userCSS}');
-  @import url('data:text/css;base64,${btoa(options.userCSSCode)}');
-  @namespace url('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul');
-  :root, ::part(scrollbox) {
-    --paxmod-font: ${options.font};
-    --paxmod-tab-size: ${options.tabSize}%;
-    --paxmod-min-tab-size: ${options.minTabSize}px;
-    --paxmod-max-tab-size: ${options.maxTabSize}px;
-    --tab-min-height: ${options.minTabHeight}px !important;
-    --paxmod-max-tab-rows: ${options.maxTabRows} !important;
-    --paxmod-display-newtab: ${options.displayNewtab ? '-webkit-box' : 'none'};
-    --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
-    --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
-    --paxmod-display-close-button: ${options.displayCloseButton ? '-webkit-box' : 'none'};
-  }`;
+    @import url('${options.userCSS}');
+    @import url('data:text/css;base64,${btoa(options.userCSSCode)}');
+    @namespace url('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul');
+    #navigator-toolbox {
+      ${options.font ? `--paxmod-font: ${options.font};` : ''}
+      --paxmod-tab-size: ${options.tabSize}%;
+      --paxmod-min-tab-size: ${options.minTabSize}px;
+      --paxmod-max-tab-size: ${options.maxTabSize}px;
+      --tab-min-height: ${options.minTabHeight}px !important;
+      --paxmod-max-tab-rows: ${options.maxTabRows} !important;
+      --paxmod-display-newtab: ${options.displayNewtab ? '-webkit-box' : 'none'};
+      --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
+      --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
+      --paxmod-display-close-button: ${options.displayCloseButton ? '-webkit-box' : 'none'};
+      ${options.forceCompact && '--proton-tab-block-margin: 0;'}
+    }
+    ${options.forceCompact && `
+      .tabbrowser-tab {
+        padding-inline: 0 !important;
+      }
+    `}
+  `;
   // -webkit-box is used as a replacement for -moz-box which doesn't seem to
   // work in FF >= 63. That's possibly an internal bug.
 
