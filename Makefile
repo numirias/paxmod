@@ -21,6 +21,7 @@ build:
 release: version build
 	git commit -m "Release v$(ver_new)" src/manifest.json updates.json
 	git tag v$(ver_new)
+	git push --tags
 	hub release create v$(ver_new) -a build/paxmod-$(ver_new).xpi -m v$(ver_new)
 	git push
 
