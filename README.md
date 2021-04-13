@@ -48,6 +48,10 @@ To load custom CSS, you can either specify a path or paste a CSS snippet in the 
 
 Paxmod needs to be able to freely modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that ships bundled with the add-on. Unfortunately, this means Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
 
+### Is the extension secure?
+
+Using Paxmod does not impact your security while browsing the web. The bundled privileged APIs are encapsulated and can't be accessed by other extensions or websites. By disabling signature enforcement in the config, you do allow the browser to run unverified extensions, however, you'll still be warned and asked every time you're about to install a new unsigned extension. Also, if you don't trust in the safety of future updates, you may want to disable auto-updates and review new versions manually before installing. See [here](https://github.com/numirias/paxmod/issues/73) for a longer answer.
+
 ### Where did the titlebar go?
 
 The inline titlebar is hidden by default, but you can re-enable it in the settings. If it doesn't integrate into the layout as expected, please [file an issue](https://github.com/numirias/paxmod/issues/new). (Note that some environments don't support an inline titlebar at all.)
