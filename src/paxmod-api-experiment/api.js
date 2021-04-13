@@ -89,7 +89,21 @@ function patch(win) {
       tab.style.transform = ''
     }
   })
+  patchMethod('_handleTabSelect', function(aInstant) {
+    // Only when "overflow" attribute is set, the selected tab will get
+    // automatically scrolled into view
+    this.setAttribute('overflow', 'true')
+    this._handleTabSelect_orig(aInstant)
+  })
   win.document.querySelector('#tabbrowser-tabs')._positionPinnedTabs()
+  // Make sure the arrowscrollbox doesn't swallow mouse wheel events, so they
+  // get propagated to the tab list, allowing the user to scroll up and down
+  let arrowscrollbox = win.document.querySelector('#tabbrowser-arrowscrollbox')
+  if (arrowscrollbox) {
+    arrowscrollbox.removeEventListener('wheel', arrowscrollbox.on_wheel)
+  } else {
+    console.warn('Paxmod: arrowscrollbox not found')
+  }
 }
 
 function unpatch(win) {
@@ -105,6 +119,13 @@ function unpatch(win) {
   unpatchMethod('_positionPinnedTabs')
   unpatchMethod('on_drop')
   unpatchMethod('on_dragover')
+  unpatchMethod('_handleTabSelect')
+  let arrowscrollbox = win.document.querySelector('#tabbrowser-arrowscrollbox')
+  if (arrowscrollbox) {
+    arrowscrollbox.addEventListener('wheel', arrowscrollbox.on_wheel)
+  } else {
+    console.warn('Paxmod: arrowscrollbox not found')
+  }
 }
 
 this.paxmod = class extends ExtensionAPI {
