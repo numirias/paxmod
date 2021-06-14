@@ -49,7 +49,7 @@ function makeDynamicSheet(options) {
       --paxmod-titlebar-display: ${options.displayTitlebar ? '-webkit-box' : 'none'};
       --paxmod-titlebar-placeholders: ${options.displayPlaceholders ? '1000px' : '0px'};
       --paxmod-display-close-button: ${options.displayCloseButton ? '-webkit-box' : 'none'};
-      ${options.forceCompact && '--proton-tab-block-margin: 0;'}
+      ${options.forceCompact && '--proton-tab-block-margin: 0; --tab-block-margin: 0;'}
     }
     ${options.forceCompact && `
       .tabbrowser-tab {
