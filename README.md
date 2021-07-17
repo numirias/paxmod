@@ -1,16 +1,17 @@
 
 # Paxmod
 
-Paxmod is a Firefox add-on that provides **multiple tab rows** and **dynamic, site-dependent tab colors**. You can customize the font, tab sizes, add your own CSS, and more.
+Paxmod is a Firefox add-on for **multiple tab rows** and **dynamic, site-dependent tab colors**.
 
-### Dark Demo (Firefox Developer)
+It works in the new Proton UI and alongside any themes. You can configure the font, tab sizes, add your own CSS, and more.
 
-![Demo dark](https://i.imgur.com/V5ZC4ma.gif)
+### Firefox Developer
 
-### Light Demo (Firefox Nightly)
+![Demo dark](https://user-images.githubusercontent.com/29267777/125923136-98214e46-ba3b-49d9-806a-31595f461059.gif)
 
-![Demo light](https://i.imgur.com/1TodZiN.png)
+### Firefox Nightly
 
+![Demo light](https://user-images.githubusercontent.com/29267777/125923505-e51a4b6b-7c48-4c04-a06d-9fc3657ea2ef.png)
 
 ## Installation
 
@@ -34,23 +35,28 @@ You can change the font, tab sizes and other settings at `about:addons` > *Exten
 
 - If the inline titlebar causes glitches or you think it's wasting too much space, [enable the standard titlebar](#the-inline-titlebar-causes-glitches).
 
-- If you want Paxmod to look exactly the same as in the dark demo, you need the [Terminus font](http://terminus-font.sourceforge.net/). I chose a bitmap font since font rendering in small sizes on dark backgrounds tends to look blurry.
+- On dark backgrounds I prefer bitmap fonts as they don't look as blurry. (The dark demo uses the [Terminus font](http://terminus-font.sourceforge.net/).)
 
 
 ### Custom CSS
 
-To load custom CSS, you can either specify a path or paste a CSS snippet in the settings. For local files, make sure you prefix the path with `file://`, e.g. `file:///tmp/foo.css`.
-
+In the settings you can paste custom CSS snippets or link to a stylesheet. If you link to a local file, make sure to prefix the path with `file://`, e.g. `file:///tmp/foo.css`.
 
 ## FAQ
 
 ### Why can't I install Paxmod as a verified extension through Mozilla?
 
-Paxmod needs to be able to freely modify the browser UI, a feature for which there is no existing WebExtension API, and probably never will be. Therefore, Paxmod relies on an "experimental API" that ships bundled with the add-on. Unfortunately, this means Mozilla won't sign the extension anymore and therefore it can't be distributed over the official channels.
+Regular themes and WebExtensions are only allowed to use a limited set of APIs. There is no support for advanced modifications of the browser UI, like changing the behavior of the tab bar. Hence, Paxmod comes bundled with two small additional APIs (officially called "API experiments") that add the necessary features. However, Mozilla won't sign extensions which use unofficial APIs and doesn't allow them to be distributed over the official channels. So, distributing transparently via Github seemed like the next best option.
 
-### Is the extension secure?
+### Is Paxmod secure?
 
-Using Paxmod does not impact your security while browsing the web. The bundled privileged APIs are encapsulated and can't be accessed by other extensions or websites. By disabling signature enforcement in the config, you do allow the browser to run unverified extensions, however, you'll still be warned and asked every time you're about to install a new unsigned extension. Also, if you don't trust in the safety of future updates, you may want to disable auto-updates and review new versions manually before installing. See [here](https://github.com/numirias/paxmod/issues/73) for a longer answer.
+These are security aspects to consider:
+
+- Disabling `xpinstall.signatures.required` allows unsigned extensions to run in the browser. However, you'll still be boldly warned and asked for confirmation whenever a site tries to install an unsigned add-on.
+- The bundled privileged APIs are encapsulated and can't be accessed by other extensions or websites. You're not extending the permissions you grant to Paxmod to anything else.
+- With auto-updates enabled, I could add malicious code in the future without you noticing. So if you don't trust me, consider disabling auto-updates for Paxmod and review new versions manually before installation.
+
+TL;DR: Paxmod is suitable for daily use, but you may want to disable auto-updates if you don't trust my future updates. See [here](https://github.com/numirias/paxmod/issues/73) for a longer answer.
 
 ### Where did the titlebar go?
 
@@ -58,13 +64,13 @@ The inline titlebar is hidden by default, but you can re-enable it in the settin
 
 ### How are tab colors calculated?
 
-Each tab color is generated dynamically from the favicon. A dominant color is extracted from the image and adjusted to an appropriate lightness per the [Lab color space](https://en.wikipedia.org/wiki/Lab_color_space). This ensures that all tab labels are legible. (You can also set lightness thresholds in the settings.)
+Each tab color is generated dynamically from the favicon. A dominant color is extracted from the image and adjusted to an appropriate lightness per the [Lab color space](https://en.wikipedia.org/wiki/Lab_color_space) to ensure that all tab labels are legible. (You can tweak the lightness thresholds in the settings.)
 
 ## Troubleshooting
 
 ### I can't install the add-on.
 
-If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that turning the checks off has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly. (Also, if you used a previous version of Paxmod, make sure you uninstall the [Stylesheet API](https://github.com/numirias/stylesheet-api-experiment) which is not required anymore.)
+If Firefox complains that the add-on isn't verified, you probably didn't turn extension signature checks off. Also note that this has no effect in the standard releases, which is why you need to use Firefox Developer or Nightly.
 
 ### The inline titlebar causes glitches.
 
@@ -73,20 +79,6 @@ Especially on MacOS, the inline titlebar may not work as expected. In that case 
 ### The layout looks off.
 
 Paxmod is mainly tested on Linux, so there are most likely some quirks on MacOS or Windows that I'm not aware of. If in doubt, please [file an issue](https://github.com/numirias/paxmod/issues/new). Your help is welcome.
-
-### How can I get that bitmap font?
-
-On Arch Linux, you can install the [Terminus font](http://terminus-font.sourceforge.net/) via:
-
-    # pacman -S terminus-font
-
-If Firefox still doesn't find the font, check whether it's installed under a different name. (On my machine, Terminus is registered as `xos4 Terminus`.) You can list your installed fonts with `fc-list`, e.g.:
-
-    $ fc-list | grep -i terminus
-    ...
-    /usr/share/fonts/misc/ter-x16b.pcf.gz: xos4 Terminus:style=Bold
-    /usr/share/fonts/misc/ter-x14n.pcf.gz: xos4 Terminus:style=Regular
-    ...
 
 ## Contributing
 
