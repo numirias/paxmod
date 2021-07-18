@@ -3,7 +3,7 @@ import iconColor from './iconcolor.js';
 import w3color from './w3color.js';
 
 const NS_XHTML = 'http://www.w3.org/1999/xhtml';
-const globalSheet = browser.extension.getURL('browser.css');
+const globalSheet = browser.runtime.getURL('browser.css');
 export let defaultOptions = {
   enableIconColors: true,
   displayNewtab: false,
@@ -29,7 +29,7 @@ let cachedOptions = {};
 // options (such as the user font), so that we can unload() the sheet once the
 // options change.
 let currentOptionsSheet = '';
-let iconSheets = {};
+let iconSheets = new Map();
 
 function makeDynamicSheet(options) {
   // User options are applied via a dynamic stylesheet. Doesn't look elegant
@@ -65,22 +65,42 @@ function makeDynamicSheet(options) {
   return `data:text/css;base64,${btoa(rules)}`;
 }
 
-function addIconColor(url) {
-  if ((!url) || url.startsWith('chrome://') || url.includes('\'') || (url in iconSheets)) {
+// Return a version of SVG `data:` URL `url` with specific dimensions
+//
+// Needed because an SVG without specified width/height appears to have zero
+// size and can't be drawn on a canvas which we need to extract image data.
+function patchSVGDataURL(url) {
+  let code = atob(url.split( ',', 2)[1]);
+  let dom = (new DOMParser()).parseFromString(code, 'image/svg+xml');
+  if (dom.documentElement.nodeName !== 'svg') {
+    // May happen on XML parsing errors
+    throw 'Failed to build SVG DOM';
+  }
+  dom.documentElement.setAttribute('width', '64');
+  dom.documentElement.setAttribute('height', '64');
+  code = (new XMLSerializer()).serializeToString(dom);
+  return `data:image/svg+xml;base64,${btoa(code)}`;
+}
+
+async function addIconColor(url, urlOrig = null) {
+  if ((!url) || url.startsWith('chrome://') || url.includes('\'') || iconSheets.has(url)) {
     return;
   }
   let img = document.createElementNS(NS_XHTML, 'img');
   img.addEventListener('load', () => {
+    if (!urlOrig && img.width == 0 && url.startsWith('data:')) {
+      addIconColor(patchSVGDataURL(url), url);
+      return;
+    }
     let color = iconColor(
       img,
       Number(cachedOptions.minLightness),
       Number(cachedOptions.maxLightness),
     );
-    // We can't access the Chrome DOM, so we apply each favicon color as a
-    // stylesheet.
-    let sheetText = `data:text/css,.tabbrowser-tab[image='${url}'] .tab-label { color: ${color} !important; }`;
+    // We can't access the chrome DOM, so apply each favicon color via stylesheet
+    let sheetText = `data:text/css,tab.tabbrowser-tab[image='${urlOrig || url}'] .tab-label { color: ${color} !important; }`;
     browser.stylesheet.load(sheetText, 'AUTHOR_SHEET');
-    iconSheets[url] = sheetText;
+    iconSheets.set(urlOrig || url, sheetText);
     img.remove();
   });
   img.src = url;
@@ -96,10 +116,10 @@ async function addAllIconColors() {
 }
 
 function removeAllIconColors() {
-  for (let sheet of Object.values(iconSheets)) {
+  for (let sheet of iconSheets.values()) {
     browser.stylesheet.unload(sheet, 'AUTHOR_SHEET');
   }
-  iconSheets = {};
+  iconSheets.clear();
 }
 
 export async function getOptions() {
