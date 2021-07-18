@@ -15,6 +15,7 @@
     "128": "img/icon.png"
   },
   "permissions": [
+    "idle",
     "management",
     "storage",
     "tabs",

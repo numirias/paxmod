@@ -212,6 +212,17 @@ async function startup() {
     await setOptions(newOptions);
   }
   applyOptions();
+
+  // When idiling, occasionally check if icon sheets should be refreshed to
+  // avoid growing a large cache.
+  browser.idle.setDetectionInterval(60 * 10);
+  browser.idle.onStateChanged.addListener(async (state) => {
+    if (state === 'idle' && iconSheets.size > 1000 &&
+        iconSheets.size > (await browser.tabs.query({})).length * 1.5) {
+      removeAllIconColors();
+      await addAllIconColors();
+    }
+  });
 }
 
 browser.runtime.onInstalled.addListener(details => {
