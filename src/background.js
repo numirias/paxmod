@@ -147,21 +147,19 @@ export async function applyOptions() {
   await browser.stylesheet.load(newOptionsSheet, 'AUTHOR_SHEET');
   currentOptionsSheet = newOptionsSheet;
   if (options.enableIconColors) {
-    if (!browser.tabs.onUpdated.hasListener(onTabUpdated)) {
-      browser.tabs.onUpdated.addListener(onTabUpdated);
+    if (!browser.tabs.onUpdated.hasListener(onFavIconChanged)) {
+      browser.tabs.onUpdated.addListener(onFavIconChanged, {properties: ["favIconUrl"]});
     }
     await addAllIconColors();
   } else {
-    if (browser.tabs.onUpdated.hasListener(onTabUpdated)) {
-      browser.tabs.onUpdated.removeListener(onTabUpdated);
+    if (browser.tabs.onUpdated.hasListener(onFavIconChanged)) {
+      browser.tabs.onUpdated.removeListener(onFavIconChanged);
     }
   }
 }
 
-function onTabUpdated(tabId, changeInfo) {
-  if (changeInfo.favIconUrl) {
-    addIconColor(changeInfo.favIconUrl);
-  }
+function onFavIconChanged(tabId, changeInfo) {
+  addIconColor(changeInfo.favIconUrl);
 }
 
 // Return the best tab lightness settings for a given theme
