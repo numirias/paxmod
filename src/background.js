@@ -197,6 +197,10 @@ export function getBestLightnessOptions(theme) {
 }
 
 async function startup() {
+  if (!('paxmod' in browser && 'stylesheet' in browser)) {
+    browser.tabs.create({url: browser.runtime.getURL('missing_api.html')});
+  }
+
   browser.stylesheet.load(globalSheet, 'AUTHOR_SHEET');
   browser.paxmod.load();
   let options = await getOptions();
