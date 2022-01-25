@@ -59,6 +59,11 @@
     transition-duration: .1ms !important;
 }
 
+.tabbrowser-tab .tab-label-container {
+    /* Unset fixed label height to allow smaller tab min height */
+    height: initial !important;
+}
+
 /* Required to hide closing tabs */
 .tabbrowser-tab:not([pinned]):not([fadein]) {
     visibility: hidden !important;
