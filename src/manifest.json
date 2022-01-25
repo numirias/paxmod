@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Paxmod",
-  "version": "3.11",
+  "version": "3.12",
   "author": "Arminius",
   "homepage_url": "https://github.com/numirias/paxmod",
   "description": "Multiple tab rows and site-dependent tab colors for Firefox.",
