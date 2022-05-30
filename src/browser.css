@@ -17,6 +17,11 @@
     visibility: visible !important;
 }
 
+#tabbrowser-tabs {
+    /* No padding, even when some tabs are pinned (see GH-88) */
+    padding-inline: 0 !important;
+}
+
 #tabbrowser-arrowscrollbox::part(scrollbox-clip) {
     /* Required, so the scrollbox always shows all tabs */
     display: inline !important;
