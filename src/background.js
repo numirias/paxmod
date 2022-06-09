@@ -55,6 +55,9 @@ function makeDynamicSheet(options) {
       .tabbrowser-tab {
         padding-inline: 0 !important;
       }
+      .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+          margin-top: 0;
+      }
     `}
   `;
   // -webkit-box is used as a replacement for -moz-box which doesn't seem to
