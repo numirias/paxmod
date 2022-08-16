@@ -24,7 +24,7 @@
 
 #tabbrowser-arrowscrollbox::part(scrollbox-clip) {
     /* Required, so the scrollbox always shows all tabs */
-    display: inline !important;
+    display: block !important;
 }
 
 #tabbrowser-arrowscrollbox::part(scrollbutton-up),
