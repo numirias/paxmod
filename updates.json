@@ -2,8 +2,8 @@
   "addons": {
     "paxmod@numirias": {
       "updates": [{
-          "version": "3.13",
-          "update_link": "https://github.com/numirias/paxmod/releases/download/v3.13/paxmod-3.13.xpi",
+          "version": "3.14",
+          "update_link": "https://github.com/numirias/paxmod/releases/download/v3.14/paxmod-3.14.xpi",
           "applications": {
             "gecko": {
                 "strict_min_version": "71.0a1"
