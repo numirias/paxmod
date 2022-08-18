@@ -69,6 +69,21 @@
     height: initial !important;
 }
 
+.tabbrowser-tab .tab-secondary-label {
+    /* Don't show text like "MUTED" or "PLAYING" after tab label... */
+    display: none;
+}
+
+.tabbrowser-tab .tab-icon-stack[indicator-replaces-favicon] > *|*.tab-icon-overlay {
+    /* ...but make the indicator icon (e.g. for playing/muted tab) visible... */
+    opacity: 1 !important;
+}
+
+.tabbrowser-tab .tab-icon-stack[indicator-replaces-favicon] > *|*:not(.tab-icon-overlay) {
+    /* ...and hide the favicon since the indicator overlays it. */
+    opacity: 0 !important;
+}
+
 /* Required to hide closing tabs */
 .tabbrowser-tab:not([pinned]):not([fadein]) {
     visibility: hidden !important;
