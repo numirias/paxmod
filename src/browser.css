@@ -47,6 +47,8 @@
     overflow-y: auto !important;
     scrollbar-width: thin !important;
     scrollbar-color: var(--toolbarbutton-active-background) transparent;
+    scroll-snap-type: y mandatory !important;
+    scroll-snap-stop: always !important;
 }
 
 /********** Single tab **********/
@@ -62,6 +64,8 @@
     /* Can't completely disable transitions, otherwise tabs have small pixel
      * offsets after closing some tabs */
     transition-duration: .1ms !important;
+    scroll-snap-align: start !important;
+    scroll-margin: var(--tab-min-height) !important;
 }
 
 .tabbrowser-tab .tab-label-container {
