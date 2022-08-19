@@ -1,38 +1,35 @@
 # usage example:
 #
-# $ version=minor make release -s
+# $ version=min make version build release -s
 
 .PHONY: build
 
 version_old != sed -n -E 's/.*"version":\s*"([0-9.]+)".*/\1/p' src/manifest.json
 version ?= $(version_old)
-ifeq ($(version), minor)
+ifeq ($(version), min)
 version != awk -F. -v OFS=. '$$NF++' <<< "$(version_old)"
 endif
 
 version:
-ifeq ($(version_old), $(version))
-	$(error need new version (version=...))
-endif
-	@echo "$(version_old) -> $(version)"
-	git diff-index --quiet HEAD || (echo "dirty git tree"; exit 1)
+	@echo "version $(version_old) -> $(version)"
 	shopt -s globstar; for fn in **/*.template; do \
-	    sed -E -e 's/\{\{\$$version\}\}/$(version)/g' $$fn > $${fn:0:-9}; \
+	    fn_orig="$${fn:0:-9}"; \
+	    sed -E -e 's/\{\{\$$version\}\}/$(version)/g' "$$fn" > "$$fn_orig"; \
+	    git add "$$fn_orig"; \
 	done
-	git --no-pager diff
+	git commit -m "Release v$(version)"
+	git tag v$(version)
 
 build:
-	web-ext build --overwrite-dest \
-	    --source-dir src --artifacts-dir build --ignore-files "*.template"
-	mv build/paxmod-$(version).{zip,xpi}
-	ln -sf paxmod-${version}.xpi build/paxmod-latest.xpi
+	@echo "build $(version)"
+	web-ext build --overwrite-dest --source-dir src --artifacts-dir build \
+	    --filename paxmod-$(version).xpi --ignore-files "*.template"
+	ln -sf paxmod-$(version).xpi build/paxmod-latest.xpi
 
-release: version build
-	git commit -m "Release v$(version)" src/manifest.json updates.json
-	git tag v$(version)
-	git push --tags
+release:
+	@echo "release $(version)"
+	git push --follow-tags
 	hub release create v$(version) -a build/paxmod-$(version).xpi -m v$(version)
-	git push
 
 demo:
 	DARK=1 FF_BINARY=firefox-developer-edition ./scripts/demo.sh
