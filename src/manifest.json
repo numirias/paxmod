@@ -1,10 +1,11 @@
 {
   "manifest_version": 2,
-  "name": "Paxmod",
+  "name": "__MSG_Name__",
   "version": "3.16",
   "author": "Arminius",
   "homepage_url": "https://github.com/numirias/paxmod",
-  "description": "Multiple tab rows and site-dependent tab colors for Firefox.",
+  "description": "__MSG_Description__",
+  "default_locale": "en",
   "applications": {
     "gecko": {
       "id": "paxmod@numirias",

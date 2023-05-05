@@ -1,0 +1,153 @@
+{
+  "Name": {
+    "message": "Paxmod",
+    "description": "Name of the extension."
+  },
+
+  "Description": {
+    "message" : "Multiple tab rows and site-dependent tab colors for Firefox.",
+    "description": "Description of the extension."
+  },
+
+  "options-header":{
+      "message": "Settings",
+      "description": "header"
+  },
+
+  "info":{
+      "message": "Problems? Check the add-on homepage (<a href='https://github.com/numirias/paxmod/'>https://github.com/numirias/paxmod</a>).",
+      "description": "info"
+  },
+
+  "enableIconColorsOption":{
+      "message": "Dynamic tab colors",
+      "description": "Option to enable dynamic tab colors"
+  },
+
+  "displayNewtabOption": {
+      "message": "Display \"New Tab\" button",
+      "description": "Option to display the new tab button"
+  },
+
+  "displayTitlebarOption": {
+      "message": "Display titlebar buttons <small>(close, minimize, ...)</small>",
+      "description": "Option to display the titlebar"
+  },
+
+  "displayPlaceholdersOption": {
+      "message": "Display titlebar spacers",
+      "description": "Option to display the titlebar spacers"
+  },
+
+  "displayCloseButtonOption": {
+      "message": "Always display tab close button",
+      "description": "Option to always display the tab close button"
+  },
+
+  "forceCompactOption": {
+      "message": "Compact tab grid",
+      "description": "Option to force compact tab grid"
+  },
+
+  "fontOption": {
+      "message": "Tab label font",
+      "description": "Option to display the tab counter"
+  },
+
+  "font":{
+    "message": "e.g. 12px \"Open Sans\";",
+    "description": "Font"
+  },
+
+  "mdn-link": {
+      "message": "(see <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/font'>here</a> for examples)",
+      "description": "Link to the MDN documentation",
+      "note": "Inner HTML"
+  },
+
+  "tabSizeOption": {
+      "message": "Default tab width",
+      "description": "Option to set the default tab width"
+  },
+
+  "minTabSizeOption": {
+      "message": "Min. tab width",
+      "description": "Option to set the minimum tab width"
+  },
+
+  "maxTabSizeOption": {
+      "message": "Max. tab width",
+      "description": "Option to set the maximum tab width"
+  },
+
+  "minTabHeightOption": {
+      "message": "Min. tab height",
+      "description": "Option to set the minimum tab height"
+  },
+
+  "maxTabRowsOption": {
+      "message": "Max. number of tab rows <small>(before scrollbar appears)</small>",
+      "description": "Option to set the maximum number of tab rows"
+  },
+
+  "fitLightnessOption": {
+      "message": "Fit tab lightness to current theme",
+      "description": "Option to fit tab color lightness"
+  },
+
+  "minLightnessOption": {
+      "message": "Min. tab color lightness <small>(best on dark theme: 59, light theme: 0)</small>",
+      "description": "Option to set the minimum tab lightness"
+  },
+
+  "maxLightnessOption": {
+      "message": "Max. tab color lightness <small>(best on dark theme: 100, light theme: 52)</small>",
+      "description": "Option to set the maximum tab lightness"
+  },
+
+  "userCSSOption": {
+      "message": "Path to custom CSS",
+      "description": "Option to set the path to custom CSS"
+  },
+
+  "userCSSCodeOption": {
+      "message": "Custom CSS code",
+      "description": "Option to set the custom CSS code"
+  },
+
+  "userCSS": {
+      "message": "e.g. file:///home/john/custom.css",
+      "description": "Custom CSS path placeholder",
+      "note": "placeholder"
+  },
+
+  "ImportExportOptions":{
+      "message": "Import/Export",
+      "description": "Import/Export header"
+  },
+
+  "importFileOption":{
+      "message": "Import options",
+      "description": "Import options"
+  },
+
+  "exportButtonOptions":{
+      "message": "Export options",
+      "description": "Export options"
+  },
+
+  "exportButton":{
+      "message": "Export",
+      "description": "Export button"
+  },
+
+  "saveOptionsButton":{
+      "message": "Apply",
+      "description": "Save options button"
+  },
+
+  "resetOptionsButton":{
+      "message": "Restore defaults",
+      "description": "Reset options button"
+  }
+}

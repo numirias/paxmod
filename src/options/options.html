@@ -5,78 +5,75 @@
     <link rel="stylesheet" href="options.css">
   </head>
   <body>
-    <h1>Settings</h1>
-
-    <div class="info">
-      Problems? Check the add-on homepage (<a href="https://github.com/numirias/paxmod/">https://github.com/numirias/paxmod</a>).
-    </div>
+    <h1 id="options-header" class="i18n-content"></h1>
+    <div class="i18n-innerHTML info" id="info"></div>
 
     <div class="options">
-      <div><label for="enableIconColors">Dynamic tab colors</label></div>
+      <div><label id="enableIconColorsOption" class="i18n-content" class="i18n-content" for="enableIconColors"></label></div>
       <div><input id="enableIconColors" type="checkbox"></div>
 
-      <div><label for="displayNewtab">Display "New Tab" button</label></div>
+      <div><label id="displayNewtabOption" class="i18n-content" for="displayNewtab"></label></div>
       <div><input id="displayNewtab" type="checkbox"></div>
 
-      <div><label for="displayTitlebar">Display titlebar buttons <small>(close, minimize, ...)</small></label></div>
+      <div><label id="displayTitlebarOption" class="i18n-innerHTML" for="displayTitlebar"></label></div>
       <div><input id="displayTitlebar" type="checkbox"></div>
 
-      <div><label for="displayPlaceholders">Display titlebar spacers</label></div>
+      <div><label id="displayPlaceholdersOption" class="i18n-content" for="displayPlaceholders"></label></div>
       <div><input id="displayPlaceholders" type="checkbox"></div>
 
-      <div><label for="displayCloseButton">Always display tab close button</label></div>
+      <div><label id="displayCloseButtonOption" class="i18n-content" for="displayCloseButton"></label></div>
       <div><input id="displayCloseButton" type="checkbox"></div>
 
-      <div><label for="forceCompact">Compact tab grid</label></div>
+      <div><label id="forceCompactOption" class="i18n-content" for="forceCompact"></label></div>
       <div><input id="forceCompact" type="checkbox"></div>
 
-      <div><label for="font">Tab label font <small>(see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font">here</a> for examples)</small></label></div>
-      <div><input id="font" type="text" placeholder="e.g. 12px &quot;Open Sans&quot;"></div>
+      <div><label id="fontOption" class="i18n-content" for="font"></label> <small id="mdn-link" class="i18n-innerHTML"></small></div>
+      <div><input id="font" class="i18n-placeholder" type="text" placeholder=""></div>
 
-      <div><label for="tabSize">Default tab width</label></div>
+      <div><label id="tabSizeOption" class="i18n-content" for="tabSize"></label></div>
       <div><input id="tabSize" type="number"> %</div>
 
-      <div><label for="minTabSize">Min. tab width</label></div>
+      <div><label id="minTabSizeOption" class="i18n-content" for="minTabSize"></label></div>
       <div><input id="minTabSize" type="number"> px</div>
 
-      <div><label for="maxTabSize">Max. tab width</label></div>
+      <div><label id="maxTabSizeOption" class="i18n-content" for="maxTabSize"></label></div>
       <div><input id="maxTabSize" type="number"> px</div>
 
-      <div><label for="minTabHeight">Min. tab height</label></div>
+      <div><label id="minTabHeightOption" class="i18n-content" for="minTabHeight"></label></div>
       <div><input id="minTabHeight" type="number"> px</div>
 
-      <div><label for="maxTabRows">Max. number of tab rows <small>(before scrollbar appears)</small></label></div>
+      <div><label id="maxTabRowsOption" class="i18n-innerHTML" for="maxTabRows"></label></div>
       <div><input id="maxTabRows" type="number"></div>
 
-      <div><label for="fitLightness">Fit tab lightness to current theme</label></div>
+      <div><label id="fitLightnessOption" class="i18n-content" for="fitLightness"></label></div>
       <div><input id="fitLightness" type="checkbox"></div>
 
-      <div><label for="minLightness">Min. tab color lightness <small>(best on dark theme: 59, light theme: 0)</small></label></div>
+      <div><label id="minLightnessOption" class="i18n-innerHTML" for="minLightness"></label></div>
       <div><input id="minLightness" type="number" min="0" max="100"> (0-100)</div>
 
-      <div><label for="maxLightness">Max. tab color lightness <small>(best on dark theme: 100, light theme: 52)</small></label></div>
+      <div><label id="maxLightnessOption" class="i18n-innerHTML" for="maxLightness"></label></div>
       <div><input id="maxLightness" type="number" min="0" max="100"> (0-100)</div>
 
-      <div><label for="userCSS">Path to custom CSS</label></div>
-      <div><input id="userCSS" type="text" placeholder="e.g. file:///home/john/custom.css"></div>
+      <div><label id="userCSSOption" class="i18n-content" for="userCSS"></label></div>
+      <div><input id="userCSS" class="i18n-placeholder" type="text" placeholder=""></div>
 
-      <div><label for="userCSSCode">Custom CSS</label></div>
+      <div><label id="userCSSCodeOption" class="i18n-content" for="userCSSCode"></label></div>
       <div><textarea id="userCSSCode"></textarea></div>
     </div>
 
-    <div><h2>Import / Export</h2></div>
+    <div><h2 id="ImportExportOptions" class="i18n-content"></h2></div>
 
     <div class="options">
-      <div><label for="importFile">Import options</label></div>
+      <div><label id="importFileOption" for="importFile" class="i18n-content">s</label></div>
       <div><input type="file" id="importFile"></div>
 
-      <div><label for="exportButton">Export options</label></div>
-      <div><button type="button" id="exportButton">Export</button></div>
+      <div><label id="exportButtonOptions" for="exportButton" class="i18n-content"></label></div>
+      <div><button type="button" id="exportButton" class="i18n-content"></button></div>
     </div>
 
     <div class="optionButtons">
-      <button type="submit" class="saveOptionsButton">Apply</button>
-      <button type="submit" class="resetOptionsButton">Restore defaults</button>
+      <button id="saveOptionsButton" type="submit" class="saveOptionsButton i18n-content"></button>
+      <button id="resetOptionsButton" type="submit" class="resetOptionsButton i18n-content"></button>
     </div>
 
     <script type="module" src="options.js"></script>

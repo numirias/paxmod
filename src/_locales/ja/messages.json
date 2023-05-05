@@ -1,0 +1,154 @@
+{
+    "Name": {
+      "message": "Paxmod",
+      "description": "Name of the extension."
+    },
+  
+    "Description": {
+      "message" : "Firefox で複数のタブ列（多段タブ）とサイト依存のタブカラーを使えるようにします！",
+      "description": "Description of the extension."
+    },
+
+    "options-header":{
+        "message": "設定",
+        "description": "header"
+    },
+
+    "info":{
+        "message": "問題が発生しましたか? アドオンの公式ページを確認してください！ (<a href='https://github.com/numirias/paxmod/'>https://github.com/numirias/paxmod</a>).",
+        "description": "info"
+    },
+
+    "enableIconColorsOption":{
+        "message": "タブアイコンの色をタブ表示名に適用する",
+        "description": "Option to enable dynamic tab colors"
+    },
+
+    "displayNewtabOption": {
+        "message": "\"新しいタブ\" を開くボタンをタブバーに表示する",
+        "description": "Option to display the new tab button"
+    },
+
+    "displayTitlebarOption": {
+        "message": "タイトルバーにウインドウ管理コンテナーを表示する <small>(閉じる, 最小化, ウインドウ化...)</small>",
+        "description": "Option to display the titlebar"
+    },
+
+    "displayPlaceholdersOption": {
+        "message": "タイトルバーのスペースを表示する",
+        "description": "Option to display the titlebar spacers"
+    },
+
+    "displayCloseButtonOption": {
+        "message": "常にタブを閉じるボタンを表示する",
+        "description": "Option to always display the tab close button"
+    },
+
+    "forceCompactOption": {
+        "message": "タブグリッドを狭くする",
+        "description": "Option to force compact tab grid"
+    },
+
+    "fontOption": {
+        "message": "タブのラベルフォントを指定",
+        "description": "Option to display the tab counter"
+    },
+
+    "font":{
+        "message": "例：12px \"Open Sans\";",
+        "description": "Font"
+    },
+
+    "mdn-link": {
+        "message": "(<a href='https://developer.mozilla.org/en-US/docs/Web/CSS/font'>ここ</a>をクリックして例を確認できます。)",
+        "description": "Link to the MDN documentation",
+        "note": "Inner HTML"
+    },
+
+    "tabSizeOption": {
+        "message": "既定のタブ幅",
+        "description": "Option to set the default tab width"
+    },
+
+    "minTabSizeOption": {
+        "message": "タブ幅の最小サイズ",
+        "description": "Option to set the minimum tab width"
+    },
+
+    "maxTabSizeOption": {
+        "message": "タブ幅の最大サイズ",
+        "description": "Option to set the maximum tab width"
+    },
+
+    "minTabHeightOption": {
+        "message": "タブの高さの最小サイズ",
+        "description": "Option to set the minimum tab height"
+    },
+
+    "maxTabRowsOption": {
+        "message": "タブ列の最大数 <small>(スクロールバーが表示される前)</small>",
+        "description": "Option to set the maximum number of tab rows"
+    },
+
+    "fitLightnessOption": {
+        "message": "タブの色の濃さを現在のテーマに合わせる",
+        "description": "Option to fit tab color lightness"
+    },
+
+    "minLightnessOption": {
+        "message": "最小タブ色明度 <small>(ダークテーマで最適: 59、ライトテーマで最適: 0)</small>",
+        "description": "Option to set the minimum tab lightness"
+    },
+
+    "maxLightnessOption": {
+        "message": "タブ色の最大明度 <small>(ダークテーマで最適: 100, ライトテーマで最適: 52)</small>",
+        "description": "Option to set the maximum tab lightness"
+    },
+
+    "userCSSOption": {
+        "message": "カスタム CSS ファイルへのパス",
+        "description": "Option to set the path to custom CSS"
+    },
+
+    "userCSSCodeOption": {
+        "message": "カスタム CSS コード",
+        "description": "Option to set the custom CSS code"
+    },
+
+    "userCSS": {
+        "message": "例：file:///home/john/custom.css",
+        "description": "Custom CSS path placeholder",
+        "note": "placeholder"
+    },
+
+    "ImportExportOptions":{
+        "message": "設定のインポート/エクスポート",
+        "description": "Import/Export header"
+    },
+
+    "importFileOption":{
+        "message": "設定をインポート",
+        "description": "Import options"
+    },
+
+    "exportButtonOptions":{
+        "message": "設定のエクスポート",
+        "description": "Export options"
+    },
+
+    "exportButton":{
+        "message": "エクスポート",
+        "description": "Export button"
+    },
+
+    "saveOptionsButton":{
+        "message": "適用",
+        "description": "Save options button"
+    },
+
+    "resetOptionsButton":{
+        "message": "設定をデフォルトに戻す",
+        "description": "Reset options button"
+    }
+}
+  
