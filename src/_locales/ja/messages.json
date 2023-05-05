@@ -149,6 +149,31 @@
     "resetOptionsButton":{
         "message": "設定をデフォルトに戻す",
         "description": "Reset options button"
+    },
+
+    "error-header":{
+        "message": "Paxmod 実行エラー !!",
+        "description": "Error header"
+    },
+  
+    "api-missing":{
+         "message": "Paxmod は、バンドルされている API 実験にアクセスできません。以下を検証してください：",
+         "description": "Error message"
+    },
+  
+    "howTo1":{
+           "message": "<code> about:config</code> で <code>extensions.experiments.enabled</code> を <code>true</code> に設定し、ブラウザーを再起動してください。",
+           "description": "Error message"
+    },
+  
+    "howTo2":{
+          "message": "API 実験による署名なし拡張機能をサポートするバージョンを使用してください。 (例：Developer or Nightly) 通常リリースではないものが対象です。",
+          "description": "Error message"
+    },
+  
+    "more-info":{
+          "message": "Paxmod アドオンの<a href='https://github.com/numirias/paxmod/'>ホームページ</a> で追加の情報を確認できます。",
+          "description": "Error message"
     }
 }
   

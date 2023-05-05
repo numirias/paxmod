@@ -149,5 +149,30 @@
   "resetOptionsButton":{
       "message": "Restore defaults",
       "description": "Reset options button"
+  },
+
+  "error-header":{
+      "message": "Paxmod Error !!",
+      "description": "Error header"
+  },
+
+  "api-missing":{
+       "message": "Paxmod is unable to access the bundled API experiments. Please verify:",
+       "description": "Error message"
+  },
+
+  "howTo1":{
+         "message": "You have set <code>extensions.experiments.enabled = true</code> at <code>about:config</code>.",
+         "description": "Error message"
+  },
+
+  "howTo2":{
+        "message": "You're running a Firefox version that supports unsigned extensions with API experiments (e.g. Developer or Nightly) and <i>not</i> the standard release.",
+        "description": "Error message"
+  },
+
+  "more-info":{
+        "message": "Check the <a href='https://github.com/numirias/paxmod/'>add-on homepage</a> for more information.",
+        "description": "Error message"
   }
 }
