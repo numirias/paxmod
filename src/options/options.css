@@ -57,3 +57,22 @@ small {
   margin-top: .5rem;
   margin-bottom: 1rem;
 }
+
+#importFile{
+  border: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  * {
+    background-color: #23222b;
+    color: #ffffff !important;
+  }
+
+  textarea {
+    border: solid 1px gray;
+  }
+
+  input {
+    border: solid 1px gray;
+  }
+}

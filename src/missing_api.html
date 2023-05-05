@@ -10,17 +10,26 @@
       code {
         font-size: 0.9rem;
       }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #222;
+          color: #eee;
+        }
+      }
     </style>
   </head>
   <body>
-    <h2>Paxmod error!</h2>
+    <h2 id="error-header" class="i18n-content"></h2>
     <p>
-      Paxmod is unable to access the bundled API experiments. Please verify:
+      <div id="api-missing" class="i18n-content"></div>
       <ul>
-        <li>You have set <code>extensions.experiments.enabled = true</code> at <code>about:config</code>.</li>
-        <li>You're running a Firefox version that supports unsigned extensions with API experiments (e.g. Developer or Nightly) and <i>not</i> the standard release.</li>
+        <li id="howTo1" class="i18n-innerHTML"></li>
+        <li id="howTo2" class="i18n-innerHTML"></li>
       </ul>
-      Check the <a href="https://github.com/numirias/paxmod/">add-on homepage</a> for more information.
+      <div id="more-info" class="i18n-innerHTML"></div>
     </p>
+
+    <script type="module" src="missing_api.js"></script>
   </body>
 </html>
